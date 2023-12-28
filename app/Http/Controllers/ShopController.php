@@ -17,6 +17,10 @@ class ShopController extends Controller
         $products = Product::all();
         return view('user.shop', compact('products'));
     }
+    public function checkOut()
+    {
+        return view('user.checkOut');
+    }
 
     /**
      * Write code on Method

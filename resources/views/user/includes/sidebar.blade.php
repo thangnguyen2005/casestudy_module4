@@ -70,7 +70,7 @@
     $currentRoute = Route::currentRouteName();
 @endphp
 
-@if ($currentRoute !== 'cart' && $currentRoute !== 'detail')
+@if ($currentRoute =='shop.index')
 <div class="container-fluid mb-3">
     <div class="row px-xl-5">
         <div class="col-lg-8">

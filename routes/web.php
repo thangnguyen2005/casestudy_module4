@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\LangController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ShopController;
@@ -39,7 +40,8 @@ Route::get('/user/master', function() {
     return view('user.master');
 });
 
-Route::get('/user/shop', [ShopController::class, 'index']);
+Route::get('/user/shop', [ShopController::class, 'index'])->name('shop.index');
+Route::get('/user/checkout', [ShopController::class, 'checkOut'])->name('user.checkOut');
 
 
 Route::get('/', [ShopController::class, 'index']);
@@ -56,3 +58,8 @@ Route::get('/admin/master', function() {
     return view('admin.master');
 });
 
+Route::get('/customer/register', [CustomerController::class, 'register'])->name('customer.register');
+Route::post('/customer/register', [CustomerController::class, 'checkRegister'])->name('customer.checkRegister');
+
+Route::get('/customer/login', [CustomerController::class, 'login'])->name('customer.login');
+Route::post('/customer/login', [CustomerController::class, 'checkLogin'])->name('customer.checkLogin');
