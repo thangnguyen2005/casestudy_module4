@@ -1,0 +1,58 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Category;
+
+use Illuminate\Http\Request;
+use App\Http\Requests\CategoryRequest;
+
+class CategoryController extends Controller
+{
+    public function index()
+    {
+        $categories = Category::paginate(3);
+
+        return view('category.index', compact('categories'));
+    }
+
+    public function create()
+    {
+        $categories = Category::all();
+        return view('category.create', compact('categories'));
+    }
+
+    public function store(CategoryRequest $request)
+    {
+        $category = new Category();
+        $category->name = $request['name'];
+        $category->save();
+        return redirect()->route('category.index');
+    }
+    public function edit($id)
+    {
+        $categories = Category::find($id);
+        return view('category.edit', compact('categories'));
+    }
+
+    public function update(CategoryRequest $request, $id)
+    {
+        $category = Category::find($id);
+        $category->name = $request->name;
+        $category->save();
+
+        return redirect()->route('category.index');
+    }
+    public function destroy($id)
+    {
+        $category = Category::find($id);
+        $category->delete();
+        return redirect()->route('category.index');
+    }
+    public function search(Request $request)
+    {
+        $keyword = $request->input('keyword');
+        $categories = Category::where('name', 'LIKE', "%$keyword%")->paginate(3);
+        return view('category.index', compact('categories'));
+    }
+}
