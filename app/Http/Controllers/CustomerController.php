@@ -39,7 +39,7 @@ class CustomerController extends Controller
 
         return view('customer.register');
     }
-    public function checkRegister(RegisterRequest $request)
+    public function checkRegister(Request $request)
     {
 
         $validated = $request->validate([

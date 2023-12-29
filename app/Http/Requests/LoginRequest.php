@@ -22,7 +22,7 @@ class LoginRequest extends FormRequest
     public function rules()
     {
         return [
-            'email' => 'required' . $this->route('id'),
+            'email' => 'required',
             'password' => 'required',
         ];
     }
