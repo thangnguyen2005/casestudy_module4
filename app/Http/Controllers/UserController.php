@@ -74,17 +74,7 @@ class UserController extends Controller
         }
         $user->save();
 
-        $data = [
-            'name' => $request->name,
-            'pass' => $request->password,
-        ];
-
-
-        $notification = [
-            'message' => 'Đăng ký thành công!',
-            'alert-type' => 'success'
-        ];
-        return redirect()->route('user.index')->with($notification);
+        return redirect()->route('user.index')->with('success', 'Đăng ký thành công!');
     }
 
     public function show($id)
@@ -138,11 +128,7 @@ class UserController extends Controller
             $data['user_image'] = $new_image;
         }
         $user->save();
-        $notification = [
-            'message' => 'Chỉnh Sửa Thành Công!',
-            'alert-type' => 'success'
-        ];
-        return redirect()->route('user.index')->with($notification);
+        return redirect()->route('user.index')->with('success', 'Sửa thành công!');
     }
 
     // hiển thị form đổi mật khẩu

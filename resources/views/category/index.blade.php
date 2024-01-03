@@ -2,7 +2,10 @@
 @section('content')
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
+        <div class="card-header py-3">
+            <h3 class="m-0 font-weight-bold text-primary" style="text-align: center">Danh mục sản phẩm</h3>
+        </div>
+        <hr>
     <div class="wrapper">
         <nav>
             <div class="input-group">
@@ -19,7 +22,6 @@
         </nav>
     </div>
     <div class="card">
-        <h5 class="card-header">{{ __('language.category') }}</h5>
         <div class="table-responsive text-nowrap">
             <table class="table">
                 <thead>
@@ -33,12 +35,17 @@
                         <tr>
                             <td>{{ $category->name }}</td>
                             <td>
-                                <form action="/category/{{ $category->id }}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <a href="/category/{{ $category->id }}/edit"
+                                @if (Auth::user()->hasPermission('Category_delete'))
+                                    <form action="{{ route('category.destroy', $category->id) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit"
+                                            class="btn btn-outline-danger">{{ __('language.delete') }}</button>
+                                @endif
+                                @if (Auth::user()->hasPermission('Category_update'))
+                                    <a href="{{ route('category.edit', $category->id) }}"
                                         class="btn btn-outline-info">{{ __('language.update') }}</a>
-                                    <button type="submit" class="btn btn-outline-danger">{{ __('language.delete') }}</button>
+                                @endif
                                 </form>
                             </td>
                         </tr>
@@ -48,8 +55,23 @@
         </div>
     </div>
     {{ $categories->links('pagination::bootstrap-4') }}
-@endsection
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            @if (session('success'))
+                Swal.fire({
+                    icon: 'success',
+                    title: '{{ session('success') }}',
+                    showConfirmButton: false,
+                    timer: 2000
+                });
+            @endif
+        });
+    </script>
+@endsection
 <style>
     .wrapper nav {
         display: inline-block;

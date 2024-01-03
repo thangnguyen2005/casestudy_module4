@@ -1,8 +1,12 @@
 @extends('admin.master')
 @section('content')
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<div class="mb-3">
-    <h5 class="card-header">{{ __('language.category') }}</h5>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <div class="card-header py-3">
+            <h3 class="m-0 font-weight-bold text-primary" style="text-align: center">Thêm mới sản phẩm</h3>
+        </div>
+        <hr>
+    <div class="mb-3">
         <form action="{{ route('category.store') }}" method="post" enctype="multipart/form-data">
             @csrf
             <label for="name" class="form-label">{{ __('language.name_category') }}</label>
@@ -11,6 +15,9 @@
                 <div style="color: red">{{ __('language.name_ct') }}</div>
             @enderror
             <input type="submit" class="btn btn-outline-success" value="{{ __('language.confirm') }}">
+
+            <a class="btn btn-outline-danger" href="{{ route('category.index') }}">Quay lại</a>
+
         </form>
     </div>
 @endsection

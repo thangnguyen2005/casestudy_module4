@@ -27,7 +27,8 @@ class CategoryController extends Controller
         $category = new Category();
         $category->name = $request['name'];
         $category->save();
-        return redirect()->route('category.index');
+        return redirect()->route('category.index')->with('success', 'Thêm thành công!');
+
     }
     public function edit($id)
     {
@@ -41,13 +42,13 @@ class CategoryController extends Controller
         $category->name = $request->name;
         $category->save();
 
-        return redirect()->route('category.index');
+        return redirect()->route('category.index')->with('success', 'Sửa thành công!');
     }
     public function destroy($id)
     {
         $category = Category::find($id);
         $category->delete();
-        return redirect()->route('category.index');
+        return redirect()->route('category.index')->with('success', 'Xóa thành công!');
     }
     public function search(Request $request)
     {

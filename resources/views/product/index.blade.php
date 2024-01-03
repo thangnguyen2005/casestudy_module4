@@ -1,7 +1,13 @@
 @extends('admin.master')
 @section('content')
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet"
+href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+crossorigin="anonymous">
+<div class="card-header py-3">
+<h3 class="m-0 font-weight-bold text-primary" style="text-align: center">Sản phẩm</h3>
+</div>
+<hr>
 
     <div class="wrapper">
         <nav>
@@ -66,20 +72,18 @@
                                     src="{{ asset('admin/uploads/product/' . $product->image) }}" alt="">
                             </td>
                             <td>
-                                <td>
-                                    @if (Auth::user()->hasPermission('Product_delete'))
-                                    <form action="{{ route('product.softdeletes', $product->id) }}" method="post">
-                                        @method('PUT')
-                                        @csrf
-                                        <button
-                                            onclick="return confirm('Bạn có muốn chuyển danh mục này vào thùng rác không ?');"
-                                            class="btn btn-success">Xóa</button>
-                                    </form>
+                                @if (Auth::user()->hasPermission('Product_delete'))
+                                <form action="{{ route('product.softdeletes', $product->id) }}" method="post">
+                                    @method('PUT')
+                                    @csrf
+                                    <button
+                                    onclick="return confirm('Bạn có muốn chuyển danh mục này vào thùng rác không ?');"
+                                    class="btn btn-outline-danger">Xóa</button>
                                     @endif
-                                    @if (Auth::user()->hasPermission('Product_update'))
-                                    <a href="{{ route('product.edit', [$product->id]) }}" class="btn btn-primary">Sửa</a>
-                                    @endif
-                                </td>
+                                </form>
+                                @if (Auth::user()->hasPermission('Product_update'))
+                                <a href="{{ route('product.edit', [$product->id]) }}" class="btn btn-outline-info">Sửa</a>
+                                @endif
                             </td>
                         </tr>
                     @endforeach
@@ -87,7 +91,23 @@
             </table>
         </div>
     </div>
-    {{ $products->links('pagination::bootstrap-4') }}
+    {{-- {{ $products->links('pagination::bootstrap-4') }} --}}
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            @if (session('success'))
+                Swal.fire({
+                    icon: 'success',
+                    title: '{{ session('success') }}',
+                    showConfirmButton: false,
+                    timer: 2000
+                });
+            @endif
+        });
+    </script>
 @endsection
 
 <style>

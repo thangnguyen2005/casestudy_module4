@@ -19,7 +19,7 @@ class GroupController extends Controller
     {
         $this->authorize('viewAny',Group::class);
 
-        $groups = Group::search()->paginate(4);;
+        $groups = Group::search()->paginate(10);;
         $users= User::get();
         $param = [
             'groups' => $groups,
@@ -49,13 +49,10 @@ class GroupController extends Controller
     public function store(Request $request)
     {
 
-        $notification = [
-            'addgroup' => 'Thêm Tên Quyền Thành Công!',
-        ];
         $group=new Group();
         $group->name=$request->name;
         $group->save();
-        return redirect()->route('group.index')->with($notification);
+        return redirect()->route('group.index')->with('success', 'Thêm thành công!');
     }
 
     /**
@@ -95,11 +92,7 @@ class GroupController extends Controller
         $group = Group::find($id);
         $group->name = $request->name;
         $group->save();
-        $notification = [
-            'message' => 'Chỉnh Sửa Thành Công!',
-            'alert-type' => 'success'
-        ];
-        return redirect()->route('group.index')->with($notification);
+        return redirect()->route('group.index')->with('success', 'Sửa thành công!');
     }
     /**
      * Remove the specified resource from storage.
@@ -107,11 +100,11 @@ class GroupController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+        public function destroy($id)
     {
         $group = Group::find($id);
         $group->delete();
-        return redirect()->route('group.index');
+        return redirect()->route('group.index')->with('success', 'Xóa thành công!');
     }
      /**
      * Show the form for editing the specified resource.
@@ -150,13 +143,9 @@ class GroupController extends Controller
      */
     public function group_detail(Request $request,$id)
     {
-        $notification = [
-            'message' => 'Cấp Quyền Thành Công!',
-            'alert-type' => 'success'
-        ];
         $group= Group::find($id);
         $group->roles()->detach();
         $group->roles()->attach($request->roles);
-        return redirect()->route('group.index')->with($notification);;
+        return redirect()->route('group.index')->with('success', 'Cấp quyền thành công!');
     }
 }

@@ -40,10 +40,9 @@
                             <form action="{{ route('product.restoredelete', $product->id) }}" method="POST">
                                 @csrf
                                 @method('put')
-                                <button type="submit" class="btn btn-success">Khôi Phục</button>
+                                <button type="submit" class="btn btn-outline-success">Khôi Phục</button>
                                 <a href="{{ route('product_destroy', $product->id) }}" id="{{ $product->id }}"
-                                    class="btn btn-danger">Xóa</a>
-
+                                    class="btn btn-outline-danger">Xóa</a>
                             </form>
                         </td>
                 @endforeach
@@ -51,5 +50,5 @@
         </table>
         {{ $products->appends(request()->query()) }}
     </div>
-    <a style="width:7%" class="btn btn-info" href="{{ route('product.index') }}">Quay lại</a>
+    <a  class="btn btn-outline-info" href="{{ route('product.index') }}">Quay lại</a>
 @endsection

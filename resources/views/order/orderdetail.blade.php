@@ -30,4 +30,6 @@
     </tbody>
 </table>
 <p>Tổng Tiền của đơn hàng: {{number_format($total)}} $</p>
+<a  class="btn btn-outline-danger" href="{{ route('order.index') }}">Quay lại</a>
 @endsection
+

@@ -49,7 +49,7 @@ class ProductController extends Controller
 
         $product = Product::orderBy('created_at', 'desc')->paginate(3);
         // return redirect()->route('product.index', compact('product'));
-        return redirect()->route('product.index', compact('product'))->with('status', 'Thêm sản phẩm thành công');
+        return redirect()->route('product.index', compact('product'))->with('success', 'Thêm thành công!');
     }
 
     public  function trash()
@@ -95,7 +95,7 @@ class ProductController extends Controller
         }
         $product->save();
 
-        return redirect()->route('product.index')->with('status', 'Sửa sản phẩm thành công');
+        return redirect()->route('product.index')->with('success', 'Sửa thành công!');
     }
 
     public function destroy($id)
@@ -103,7 +103,7 @@ class ProductController extends Controller
         $this->authorize('forceDelete', Product::class);
         $product = Product::onlyTrashed()->findOrFail($id);
         $product->forceDelete();
-        return redirect()->back()->with('status', 'Xóa sản phẩm thành công');
+        return redirect()->back()->with('success', 'Xóa thành công!');
     }
     public function search(Request $request)
     {

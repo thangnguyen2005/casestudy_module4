@@ -18,7 +18,7 @@
             <div class="panel-panel-default">
                 <header class="page-title-bar">
 
-                    <h1 class="page-title">Thông tin</h1>
+                    <h1 class="">Thông tin</h1>
                 </header>
                  <!-- Modal -->
                  <div style="color: red" class="modal fade" id="editModal" tabindex="-1" aria-hidden="true">

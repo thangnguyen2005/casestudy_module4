@@ -1,124 +1,97 @@
-<!DOCTYPE html>
-<html>
+<style>
+    /* CSS cho phần form */
+    .container {
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f7f7f7;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }
 
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            background-color: black;
-        }
+    .container h1 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
 
-        * {
-            box-sizing: border-box;
-        }
+    .container p {
+        text-align: center;
+        margin-bottom: 20px;
+    }
 
-        /* Add padding to containers */
-        .container {
-            padding: 16px;
-            background-color: white;
-        }
+    .container label {
+        display: block;
+        margin-bottom: 10px;
+    }
 
-        /* Full-width input fields */
-        input[type=text],
-        input[type=password] {
-            width: 100%;
-            padding: 15px;
-            margin: 5px 0 22px 0;
-            display: inline-block;
-            border: none;
-            background: #f1f1f1;
-        }
+    .container input[type="text"],
+    .container input[type="password"] {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        margin-bottom: 10px;
+    }
 
-        input[type=text]:focus,
-        input[type=password]:focus {
-            background-color: #ddd;
-            outline: none;
-        }
+    .container hr {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
 
-        /* Overwrite default styles of hr */
-        hr {
-            border: 1px solid #f1f1f1;
-            margin-bottom: 25px;
-        }
+    .container .registerbtn {
+        width: 100%;
+        padding: 10px;
+        background-color: #4CAF50;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
 
-        /* Set a style for the submit button */
-        .registerbtn {
-            background-color: #04AA6D;
-            color: white;
-            padding: 16px 20px;
-            margin: 8px 0;
-            border: none;
-            cursor: pointer;
-            width: 100%;
-            opacity: 0.9;
-        }
+    .container .registerbtn:hover {
+        background-color: #45a049;
+    }
 
-        .registerbtn:hover {
-            opacity: 1;
-        }
+    .container p.signin {
+        text-align: center;
+        margin-top: 10px;
+    }
 
-        /* Add a blue text color to links */
-        a {
-            color: dodgerblue;
-        }
+    .container p.signin a {
+        color: #4CAF50;
+    }
 
-        /* Set a grey background color and center the text of the "sign in" section */
-        .signin {
-            background-color: #f1f1f1;
-            text-align: center;
-        }
-    </style>
-</head>
+    .container p.signin a:hover {
+        text-decoration: underline;
+    }
+</style>
 
-<body>
+<form action="{{ route('customer.checkRegister') }}" method="POST">
+    @csrf
 
-    <form action="{{ route('customer.checkRegister') }}" method="POST">
-        @csrf
+    <div class="container">
+        <h1>Trang Đăng Ký</h1>
 
-        <div class="container">
-            <h1>Register</h1>
-            <p>Please fill in this form to create an account.</p>
-            <hr>
+        <label for="name"><b>Name</b></label>
+        <input type="text" name="name" id="name">
 
-            <label for="name"><b>name</b></label>
-            <input type="text" name="name" id="email">
-            @error('name')
-                <div style="color: red">{{$message}}</div>
-            @enderror
-            <label for="address"><b>address</b></label>
-            <input type="text"name="address" id="email">
-            @error('address')
-                <div style="color: red">{{$message}}</div>
-            @enderror
-            <label for="email"><b>Email</b></label>
-            <input type="text" name="email" id="email">
-            @error('email')
-                <div style="color: red">{{$message}}</div>
-            @enderror
-            <label for="phone"><b>phone</b></label>
-            <input type="text" name="phone" id="phone">
-            @error('phone')
-                <div style="color: red">{{$message}}</div>
-            @enderror
-            <label for="psw"><b>Password</b></label>
-            <input type="password" name="psw" id="psw">
-            @error('password')
-                <div style="color: red">{{$message}}</div>
-            @enderror
-            <label for="psw-repeat"><b>Repeat Password</b></label>
-            <input type="password" name="psw_repeat" id="psw-repeat">
-            <hr>
-            <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
+        <label for="address"><b>Address</b></label>
+        <input type="text" name="address" id="address">
 
-            <button type="submit" class="registerbtn">Register</button>
-        </div>
+        <label for="email"><b>Email</b></label>
+        <input type="text" name="email" id="email">
 
-        <div class="container signin">
-            <p>Already have an account? <a href="#">Sign in</a>.</p>
-        </div>
-    </form>
+        <label for="phone"><b>Phone</b></label>
+        <input type="text" name="phone" id="phone">
 
-</body>
+        <label for="psw"><b>Password</b></label>
+        <input type="password" name="psw" id="psw">
 
-</html>
+        <label for="psw-repeat"><b>Repeat Password</b></label>
+        <input type="password" name="psw_repeat" id="psw-repeat">
+
+        <button type="submit" class="registerbtn">Đăng Ký</button>
+
+        <p class="signin">Bạn Đã Có Tài Khoản? <a href="{{route('customer.login')}}">Đăng nhập</a>.</p>
+    </div>
+</form>

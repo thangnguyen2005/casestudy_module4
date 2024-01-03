@@ -8,8 +8,10 @@
                         <div class="market-updates">
                             <div class="container">
                                 <div class="pagetitle">
-                                    <h1 class="offset-4">Chức Vụ</h1>
 
+                                    <div class="card-header py-3">
+                                        <h3 class="m-0 font-weight-bold text-primary" style="text-align: center">Chức vụ</h3>
+                                    </div>
                                 </div>
                                 <div class="page-section">
                                     <form method="post" action="{{ route('group.group_detail', $group->id) }}">

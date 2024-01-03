@@ -16,8 +16,15 @@ border-radius:50%;
         <div class="table-agile-info">
             <div class="panel-panel-default">
                     <header class="page-title-bar">
-                        <h1 class="offset-4">Nhân sự</h1>
-                        <a href="{{ route('user.create') }}" class="btn btn-info">Đăng ký tài khoản nhân sự</a>
+                        <link rel="stylesheet"
+                                        href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+                                        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+                                        crossorigin="anonymous">
+                                    <div class="card-header py-3">
+                                        <h3 class="m-0 font-weight-bold text-primary">Nhân sự</h3>
+                                    </div>
+                                    <hr>
+                        <a href="{{ route('user.create') }}" class="btn btn-outline-primary">Đăng ký tài khoản nhân sự</a>
                     </header>
                     <hr>
                     <div>
@@ -54,11 +61,11 @@ border-radius:50%;
                                         <td>
                                             @if (Auth::user()->hasPermission('User_update'))
                                             <a href="{{ route('user.edit', $user->id) }}"
-                                                class="btn btn-warning">Sửa</a>
+                                                class="btn btn-outline-warning">Sửa</a>
                                             @endif
                                             @if (Auth::user()->hasPermission('User_forceDelete'))
                                             <a data-href="{{ route('user.destroy', $user->id) }}"
-                                                id="{{ $user->id }}" class="btn btn-info deleteIcon">Xóa</i></a>
+                                                id="{{ $user->id }}" class="btn btn-outline-danger deleteIcon">Xóa</i></a>
                                             @endif
                                         </td>
                                     </tr>
@@ -74,6 +81,16 @@ border-radius:50%;
         <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/dt-1.10.25/datatables.min.js"></script>
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script>
+            $(document).ready(function() {
+            @if (session('success'))
+                Swal.fire({
+                    icon: 'success',
+                    title: '{{ session('success') }}',
+                    showConfirmButton: false,
+                    timer: 2000
+                });
+            @endif
+        });
            $(document).on('click', '.deleteIcon', function(e) {
             e.preventDefault();
             let id = $(this).attr('id');

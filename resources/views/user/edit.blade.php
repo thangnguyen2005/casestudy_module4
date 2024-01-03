@@ -8,8 +8,14 @@
                     <div class="container">
                         <div class="page-inner">
                             <header class="page-title-bar">
-
-                                <h1 class="offset-4">Thay đổi thông tin</h1>
+                                <link rel="stylesheet"
+                                href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+                                integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+                                crossorigin="anonymous">
+                            <div class="card-header py-3">
+                                <h3 class="m-0 font-weight-bold text-primary">Thay đổi thông tin</h3>
+                            </div>
+                            <hr>
                             </header>
                             <div class="page-section">
                                 <form action="{{ route('user.update', $user->id) }}" method="POST"
@@ -135,8 +141,8 @@
                                             </div>
                                             <div class="form-actions">
                                                 <br><br><br><br>
-                                                <button class="btn btn-success" type="submit">Lưu thay đổi</button>
-                                                <a class="btn btn-danger" href="{{ route('user.index') }}">Hủy</a>
+                                                <button class="btn btn-outline-success" type="submit">Lưu thay đổi</button>
+                                                <a class="btn btn-outline-danger" href="{{ route('user.index') }}">Quay lại</a>
                                             </div>
                                         </div>
                                 </form>

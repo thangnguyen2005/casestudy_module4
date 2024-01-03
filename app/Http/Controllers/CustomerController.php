@@ -29,7 +29,7 @@ class CustomerController extends Controller
             'password' => $request->password
         ];
         if (Auth::guard('customers')->attempt($arr)) {
-            return redirect()->route('cart');
+            return redirect()->route('shop.index');
         } else {
             return redirect()->route('customer.login');
         }
@@ -42,16 +42,6 @@ class CustomerController extends Controller
     public function checkRegister(Request $request)
     {
 
-        $validated = $request->validate([
-            'email' => 'required|unique:customers|email',
-            ]);
-
-        $notifications = [
-            'ok' => 'ok',
-        ];
-        $notification = [
-            'message' => 'error',
-        ];
         $customer = new Customer();
         $customer->name = $request->name;
         $customer->phone = $request->phone;
@@ -63,7 +53,7 @@ class CustomerController extends Controller
             $customer->save();
             return redirect()->route('customer.login');
         } else {
-            return redirect()->route('customer.register')->with($notification);
+            return redirect()->route('customer.register');
 
         }
     }
@@ -124,5 +114,12 @@ class CustomerController extends Controller
             ->paginate(3);
 
         return view('customer.index', compact('customers'));
+    }
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect()->route('shop.index');
     }
 }

@@ -30,7 +30,7 @@ Route::get('/home', function () {
 
 Route::get('/', [AuthController::class, 'login'])->name('login');
 Route::post('/postlogin', [AuthController::class, 'postlogin'])->name('postlogin');
-Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+Route::post('/admin/logout', [AuthController::class, 'logout'])->name('admin.logout');
 
 Route::prefix('/')->middleware(['auth', 'preventBackHistory'])->group(function () {
     //bảng categories
@@ -65,6 +65,7 @@ Route::prefix('/')->middleware(['auth', 'preventBackHistory'])->group(function (
     Route::get('/customer/search', [CustomerController::class, 'search'])->name('customer.search');
     Route::delete('/customer/{id}', [CustomerController::class, 'destroy'])->name('customer.destroy');
 
+
     // search
     Route::get('/product/search', [ProductController::class, 'search'])->name('product.search');
 
@@ -95,7 +96,7 @@ Route::group(['prefix' => 'groups'], function () {
     Route::post('/store', [GroupController::class, 'store'])->name('group.store');
     Route::get('/edit/{id}', [GroupController::class, 'edit'])->name('group.edit');
     Route::put('/update/{id}', [GroupController::class, 'update'])->name('group.update');
-    Route::delete('destroy/{id}', [GroupController::class, 'destroy'])->name('group.destroy');
+    Route::get('destroy/{id}', [GroupController::class, 'destroy'])->name('group.destroy');
     Route::get('/detail/{id}', [GroupController::class, 'detail'])->name('group.detail');
     Route::put('/group_detail/{id}', [GroupController::class, 'group_detail'])->name('group.group_detail');
 });
@@ -104,7 +105,8 @@ Route::get('/customer/register', [CustomerController::class, 'register'])->name(
 Route::post('/customer/register', [CustomerController::class, 'checkRegister'])->name('customer.checkRegister');
 Route::get('/customer/login', [CustomerController::class, 'login'])->name('customer.login');
 Route::post('/customer/login', [CustomerController::class, 'checkLogin'])->name('customer.checkLogin');
-Route::get('/shop/shop', [ShopController::class, 'index'])->name('shop.index');
+Route::post('/customer/logout', [CustomerController::class, 'logout'])->name('customer.logout');
+
 Route::get('/shop/checkout', [ShopController::class, 'checkOut'])->name('shop.checkOut');
 Route::post('/order', [ShopController::class, 'order'])->name('order');
 Route::prefix('order')->group(function () {
@@ -115,7 +117,7 @@ Route::get('/shop/master', function () {
     return view('shop.master');
 });
 
-Route::get('/shop', [ShopController::class, 'index']);
+Route::get('/shop', [ShopController::class, 'index'])->name('shop.index');
 Route::get('cart', [ShopController::class, 'cart'])->name('cart');
 Route::get('products/{id}', [ShopController::class, 'detail'])->name('detail');
 Route::get('add-to-cart/{id}', [ShopController::class, 'addToCart'])->name('add.to.cart');

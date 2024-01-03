@@ -11,7 +11,13 @@
                         <nav aria-label="breadcrumb">
                             {{-- <a href="{{ route('product.index') }}" class="w3-button w3-red">Quay Lại</a> --}}
                         </nav>
-                        <h1 class="page-title">Sửa Quyền</h1>
+                        <link rel="stylesheet"
+                                        href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+                                        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+                                        crossorigin="anonymous">
+                                    <div class="card-header py-3">
+                                        <h3 class="m-0 font-weight-bold text-primary" style="text-align: center">Sửa quyền</h3>
+                                    </div>
                     </header>
                     <hr>
                     <div class="panel-body">
@@ -32,7 +38,7 @@
                             <br><br>
                             <div class="form-group">
                                 <div class="col-lg-offset-2 col-lg-6">
-                                    <button class="btn btn-outline-success" type="submit">Thêm Thể Loại</button>
+                                    <button class="btn btn-outline-success" type="submit">Lưu thông tin</button>
                                     <a href="{{ route('group.index') }}" class="btn btn-outline-danger"
                                         type="submit">Hủy</a>
                                 </div>

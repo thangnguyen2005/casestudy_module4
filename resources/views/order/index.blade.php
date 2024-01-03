@@ -26,7 +26,7 @@
                     <td>{{ $item->date_at }}</td>
 
                     <td>
-                        <a class='btn btn-info' href="{{ route('order.detail', $item->id) }}">Chi tiết</a>
+                        <a class="btn btn-outline-info" href="{{ route('order.detail', $item->id) }}">Chi tiết</a>
                     </td>
                 </tr>
             @endforeach

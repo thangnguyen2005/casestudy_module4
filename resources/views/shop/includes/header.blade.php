@@ -8,14 +8,27 @@
                 <a class="text-body mr-3" href="">FAQs</a>
             </div>
         </div>
-        
+
         <div class="col-lg-6 text-center text-lg-right">
             <div class="d-inline-flex align-items-center">
                 <div class="btn-group">
-                    <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">My Account</button>
+                    <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">
+                        @if (isset(Auth()->guard('customers')->user()->name))
+                            {{ Auth()->guard('customers')->user()->name }}
+                        @else
+                            My Account
+                        @endif
+                    </button>
                     <div class="dropdown-menu dropdown-menu-right">
-                        <button class="dropdown-item" type="button">Sign in</button>
-                        <button class="dropdown-item" type="button">Sign up</button>
+                        @if (isset(Auth()->guard('customers')->user()->name))
+                            <form action="{{ route('customer.logout') }}" method="POST">
+                                @csrf
+                                <button type="submit" class="dropdown-item">Đăng Xuất</button>
+                            </form>
+                        @else
+                            <a href="{{ route('customer.login') }}" class="dropdown-item" type="button">Đăng Nhập</a>
+                            <a href="{{ route('customer.register') }}" class="dropdown-item" type="button">Đăng Ký</a>
+                        @endif
                     </div>
                 </div>
                 <div class="btn-group mx-2">
