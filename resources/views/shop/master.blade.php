@@ -29,12 +29,12 @@
 
 <body>
     <!-- Topbar Start -->
-    @include('user.includes.header')
+    @include('shop.includes.header')
     <!-- Topbar End -->
 
 
     <!-- Navbar Start -->
-    @include('user.includes.sidebar')
+    @include('shop.includes.sidebar')
 
     <!-- Navbar End -->
 
@@ -58,7 +58,7 @@
 
 
     <!-- Footer Start -->
-    @include('user.includes.footer')
+    @include('shop.includes.footer')
     <!-- Footer End -->
 
 

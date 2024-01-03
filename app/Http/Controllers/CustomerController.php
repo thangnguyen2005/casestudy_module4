@@ -21,7 +21,7 @@ class CustomerController extends Controller
 
         return view('customer.login');
     }
-    public function checklogin(LoginRequest $request)
+    public function checklogin(Request $request)
     {
         // dd(123);
         $arr = [

@@ -1,4 +1,4 @@
-@extends('user.master')
+@extends('shop.master')
 @section('content')
 <div class="container-fluid py-5" style="background-color: #FFFFF0;">
     <div class="row px-xl-5">

@@ -1,5 +1,5 @@
 
-@extends('user.master')
+@extends('shop.master')
 @section('content')
 
 <table id="cart" class="table table-hover table-condensed">
@@ -48,9 +48,9 @@
         </tr>
         <tr>
             <td colspan="5" class="text-right">
-                <a href="{{ url('/') }}" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue
+                <a href="{{ url('/shop') }}" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue
                     Shopping</a>
-                <a class="btn btn-success" href="{{url('/user/checkout')}}">Checkout</a>
+                <a class="btn btn-success" href="{{url('/shop/checkout')}}">Checkout</a>
             </td>
         </tr>
     </tfoot>

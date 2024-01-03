@@ -183,10 +183,7 @@
     }
 </style>
 <section>
-    <div class="img-bg">
-        <img src="https://niemvuilaptrinh.ams3.cdn.digitaloceanspaces.com/tao_trang_dang_nhap/hinh_anh_minh_hoa.jpg"
-            alt="Hình Ảnh Minh Họa">
-    </div>
+    
     <div class="noi-dung">
         <div class="form">
             <h2>Trang Đăng Nhập</h2>

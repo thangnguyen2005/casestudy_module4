@@ -1,4 +1,4 @@
-@extends('user.master')
+@extends('shop.master')
 @section('content')
 <table>
 <div class="container-fluid">
@@ -7,7 +7,7 @@
 
 
                 <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">Địa chỉ giao hàng</span></h5>
-                <form class="checkout-form" method="POST" action="" >
+                <form class="checkout-form" method="POST" action="{{ route('order')}}" >
                                 @csrf
                                 @if (isset(Auth()->guard('customers')->user()->name))
                 <div class="bg-light p-30">

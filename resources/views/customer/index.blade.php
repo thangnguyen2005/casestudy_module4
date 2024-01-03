@@ -18,9 +18,7 @@
                         <button type="submit">Search</button>
                     </td>
                 </form>
-                    <a href="/customer/create" class="btn btn-primary">Thêm</a> <br>
-                    <a href="/category" >Bảng category</a> <br>
-                    <a href="/product" >Bảng product</a> <br>
+                    <a href="/customer/create" class="btn btn-outline-primary">{{ __('language.add_new') }}</a> <br>
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" border="1">
 
 
@@ -43,12 +41,18 @@
                                 <td>{{ $customer->phone }}</td>
                                 <td>{{ $customer->password }}</td>
                                 <td>
-                                    <form action="/customer/{{ $customer->id }}" method="POST">
+                                    @if (Auth::user()->hasPermission('Customer_delete'))
+                                    <form action="{{ route('customer.softdeletes', $customer->id) }}" method="post">
+                                        @method('PUT')
                                         @csrf
-                                        @method('DELETE')
-                                        <a href="/customer/{{ $customer->id }}/edit" class="btn btn-primary">Sửa</a>
-                                        <button type="submit" class="btn btn-danger">Xoá</button>
+                                        <button
+                                            onclick="return confirm('Bạn có muốn chuyển danh mục này vào thùng rác không ?');"
+                                            class="btn btn-success">Xóa</button>
                                     </form>
+                                    @endif
+                                    @if (Auth::user()->hasPermission('Customer_update'))
+                                    <a href="{{ route('customer.edit', [$customer->id]) }}" class="btn btn-primary">Sửa</a>
+                                    @endif
                                 </td>
                             </tr>
                         @endforeach

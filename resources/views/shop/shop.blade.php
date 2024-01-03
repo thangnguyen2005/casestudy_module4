@@ -1,4 +1,4 @@
-@extends('user.master')
+@extends('shop.master')
 @section('content')
     <!-- Categories Start -->
     <div class="container-fluid pt-5">

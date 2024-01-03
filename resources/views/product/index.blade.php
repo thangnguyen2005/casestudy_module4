@@ -17,7 +17,7 @@
         <nav>
             <a href="/product/create" class="btn btn-outline-primary">{{ __('language.add_new') }}</a>
         </nav>
-        <nav style="margin-left: 800px;">
+        <nav style="margin-left: 600px;">
             <li class="nav-item dropdown">
                 <select class="changeLang">
                     <option value="en" {{ session()->get('locale') == 'en' ? 'selected' : '' }}>EN</option>
@@ -66,13 +66,20 @@
                                     src="{{ asset('admin/uploads/product/' . $product->image) }}" alt="">
                             </td>
                             <td>
-                                <form action="/product/{{ $product->id }}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <a href="/product/{{ $product->id }}/edit"
-                                        class="btn btn-outline-info">{{ __('language.update') }}</a>
-                                    <button type="submit" class="btn btn-outline-danger">{{ __('language.delete') }}</button>
-                                </form>
+                                <td>
+                                    @if (Auth::user()->hasPermission('Product_delete'))
+                                    <form action="{{ route('product.softdeletes', $product->id) }}" method="post">
+                                        @method('PUT')
+                                        @csrf
+                                        <button
+                                            onclick="return confirm('Bạn có muốn chuyển danh mục này vào thùng rác không ?');"
+                                            class="btn btn-success">Xóa</button>
+                                    </form>
+                                    @endif
+                                    @if (Auth::user()->hasPermission('Product_update'))
+                                    <a href="{{ route('product.edit', [$product->id]) }}" class="btn btn-primary">Sửa</a>
+                                    @endif
+                                </td>
                             </td>
                         </tr>
                     @endforeach

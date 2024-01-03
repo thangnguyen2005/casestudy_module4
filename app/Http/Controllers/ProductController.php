@@ -8,11 +8,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\ProductRequest;
 
-
 class ProductController extends Controller
 {
     public function index()
-{
+    {
     $products = Product::with('category')->latest('created_at')->paginate(3);
     $startingNumber = ($products->currentPage() - 1) * $products->perPage() + 1;
 
@@ -21,6 +20,8 @@ class ProductController extends Controller
 
     public function create()
     {
+    $this->authorize('create', Product::class);
+
         $categories = Category::all();
         $products = Product::all();
         return view('product.create', compact('products', 'categories'));
@@ -51,8 +52,17 @@ class ProductController extends Controller
         return redirect()->route('product.index', compact('product'))->with('status', 'Thêm sản phẩm thành công');
     }
 
+    public  function trash()
+    {
+        $products = Product::onlyTrashed()->paginate(3);
+        $param = ['products' => $products];
+        return view('trash', $param);
+        // dd(223);
+    }
+
     public function edit($id)
     {
+        $this->authorize('update', Product::class);
         $product = Product::find($id);
         $categories = Category::all();
 
@@ -90,9 +100,10 @@ class ProductController extends Controller
 
     public function destroy($id)
     {
-        $product = Product::find($id);
-        $product->delete();
-        return redirect()->route('product.index');
+        $this->authorize('forceDelete', Product::class);
+        $product = Product::onlyTrashed()->findOrFail($id);
+        $product->forceDelete();
+        return redirect()->back()->with('status', 'Xóa sản phẩm thành công');
     }
     public function search(Request $request)
     {
@@ -117,4 +128,22 @@ class ProductController extends Controller
         $product = Product::findOrFail($id);
         return view('product.show', compact('product'));
     }
+
+    public  function softdeletes($id)
+    {
+        $this->authorize('delete', Product::class);
+        date_default_timezone_set("Asia/Ho_Chi_Minh");
+        $product = Product::findOrFail($id);
+        $product->deleted_at = date("Y-m-d h:i:s");
+        $product->save();
+        return redirect()->route('product.index');
+    }
+    public function restoredelete($id)
+    {
+        // $this->authorize('restore', Category::class);
+        $products = Product::withTrashed()->where('id', $id);
+        $products->restore();
+        return redirect()->route('product.trash');
+    }
 }
+

@@ -31,8 +31,8 @@ id="layout-navbar">
                 </div>
               </div>
               <div class="flex-grow-1">
-                <span class="fw-medium d-block">John Doe</span>
-                <small class="text-muted">Admin</small>
+                <span class="fw-medium d-block">{{ Auth()->guard('web')->user()->name }}</span>
+                <small class="text-muted">{{ Auth()->guard('web')->user()->name }}</small>
               </div>
             </div>
           </a>
@@ -53,22 +53,23 @@ id="layout-navbar">
           </a>
         </li>
         <li>
-          <a class="dropdown-item" href="#">
-            <span class="d-flex align-items-center align-middle">
-              <i class="flex-shrink-0 bx bx-credit-card me-2"></i>
-              <span class="flex-grow-1 align-middle ms-1">Billing</span>
-              <span class="flex-shrink-0 badge badge-center rounded-pill bg-danger w-px-20 h-px-20">4</span>
-            </span>
-          </a>
-        </li>
-        <li>
           <div class="dropdown-divider"></div>
         </li>
         <li>
-          <a class="dropdown-item" href="javascript:void(0);">
-            <i class="bx bx-power-off me-2"></i>
-            <span class="align-middle">Log Out</span>
-          </a>
+            <a id="logout-link" class="dropdown-item" href="javascript:void(0);">
+                <i class="bx bx-power-off me-2"></i>
+                <span class="align-middle">Log Out</span>
+            </a>
+
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                @csrf
+            </form>
+            <script>
+                document.getElementById('logout-link').addEventListener('click', function(event) {
+                    event.preventDefault();
+                    document.getElementById('logout-form').submit();
+                });
+            </script>
         </li>
       </ul>
     </li>
