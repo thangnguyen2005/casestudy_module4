@@ -1,10 +1,21 @@
 @extends('admin.master')
 @section('content')
-    <h1 class="offset-4">Đơn hàng</h1>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <div class="card-header py-3">
+        <h3 class="m-0 font-weight-bold text-primary" style="text-align: center">Đơn đặt hàng</h3>
+    </div>
+
     <hr>
-    <table class="table table-bordered">
+    <td style="text-align: center;">
+        <a href="{{ route('xuat') }}" class="btn btn-outline-info">Xuất file excel</a>
+    </td>
+    <hr>
+    <table class="table table-striped">
         <thead>
-            <tr>
+            <tr class="table-active">
+
                 <th scope="col">STT</th>
                 <th scope="col">Tên Khách Hàng</th>
                 <th scope="col">Email</th>

@@ -79,9 +79,10 @@
                         </div>
                     </div>
                     <div class="text-center py-4">
+                        Số lượng :  <a class="h6 text-decoration-none text-truncate" href="">{{ $product->quantity }}</a><br>
                         <a class="h6 text-decoration-none text-truncate" href="">{{ $product->name }}</a>
                         <div class="d-flex align-items-center justify-content-center mt-2">
-                            <h5>{{ number_format($product->price )}}</h5>  <h6 class="text-muted ml-2"><del>{{ number_format($product->price )}}</del></h6>
+                            <h5>{{ number_format($product->price )}}</h5> <h6 class="text-muted ml-2"><del>{{ number_format($product->price )}}</del></h6>
                         </div>
 
                     </div>

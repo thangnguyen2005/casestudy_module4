@@ -22,6 +22,7 @@ class Customer extends Authenticatable
         'email',
         'phone',
         'password',
+        'google_id',
     ];
     protected $table = 'customers';
 }

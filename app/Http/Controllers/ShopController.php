@@ -142,16 +142,14 @@ class ShopController extends Controller
                 ->where('id', '=', $orderItem->product_id)
                 ->decrement('quantity', $orderItem->quantity);
         }
-        $notification = [
-            'message' => 'success',
-        ];
+
         $data = [
             'name' => $request->name,
             'pass' => $request->password,
         ];
         // dd($request);
         // alert()->success('Thêm Đơn Đặt: '.$request->name,'Thành Công');
-        return redirect()->route('shop.index')->with($notification);;
+        return redirect()->route('shop.index')->with('success', 'Đặt hàng thành công!');
         // }
         // } catch (\Exception $e) {
         //     // dd($request);

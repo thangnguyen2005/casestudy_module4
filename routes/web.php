@@ -7,6 +7,7 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\GroupController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LangController;
+use App\Http\Controllers\LoginGoogleController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ShopController;
@@ -23,6 +24,7 @@ use App\Http\Controllers\UserController;
 |
 
 */
+
 Route::get('/home', function () {
     return view('homes');
 });
@@ -112,6 +114,7 @@ Route::post('/order', [ShopController::class, 'order'])->name('order');
 Route::prefix('order')->group(function () {
     Route::get('/', [OrderController::class, 'index'])->name('order.index');
     Route::get('/detail/{id}', [OrderController::class, 'detail'])->name('order.detail');
+    Route::get('/xuat', [OrderController::class, 'exportOrder'])->name('xuat');
 });
 Route::get('/shop/master', function () {
     return view('shop.master');
@@ -125,3 +128,7 @@ Route::patch('update-cart', [ShopController::class, 'update'])->name('update.car
 Route::delete('remove-from-cart', [ShopController::class, 'remove'])->name('remove.from.cart');
 
 Route::get('lang/change', [LangController::class, 'change'])->name('changeLang');
+
+// login by google
+Route::get('auth/google', [LoginGoogleController::class, 'redirectToGoogle']);
+Route::get('auth/google/callback', [LoginGoogleController::class, 'handleGoogleCallback']);

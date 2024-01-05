@@ -13,7 +13,7 @@
                                 integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
                                 crossorigin="anonymous">
                             <div class="card-header py-3">
-                                <h3 class="m-0 font-weight-bold text-primary">Thay đổi thông tin</h3>
+                                <h3 class="m-0 font-weight-bold text-primary" style="text-align: center">Thay đổi thông tin</h3>
                             </div>
                             <hr>
                             </header>

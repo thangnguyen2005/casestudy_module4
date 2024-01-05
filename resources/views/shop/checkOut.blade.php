@@ -1,11 +1,16 @@
 @extends('shop.master')
 @section('content')
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    </script>
     <table>
         <div class="container-fluid">
+            <div class="success-message" style="display: none;">
+                <h5 class="text-success">Đặt hàng thành công!</h5>
+                <p>Cảm ơn bạn đã đặt hàng. Chúng tôi sẽ liên hệ với bạn trong thời gian sớm nhất.</p>
+            </div>
             <div class="row px-xl-5">
                 <div class="col-lg-8">
-
-
                     <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">Địa chỉ
                             giao hàng</span></h5>
                     <form class="checkout-form" method="POST" action="{{ route('order') }}">
@@ -43,13 +48,9 @@
                                     <a href="{{ route('customer.login') }}" class="btn btn-danger">Đăng Nhập</a>
                         @endif
                         @php
-
                             $totalAll = 0;
-
                         @endphp
-
                         <div class="block">
-
                             <h4 class="widget-title">Tóm Tắt</h4>
                             <div class="bg-light p-30 mb-5">
                                 <div class="border-bottom">
@@ -101,16 +102,35 @@
                                 </div>
                             </div>
                         </div>
-
-
-
                     </form>
-
                 </div>
-
             </div>
         </div>
-
-
     </table>
+
+
+    <script>
+        $(document).ready(function() {
+            $('.checkout-form').submit(function(e) {
+                e.preventDefault(); // Ngăn chặn gửi biểu mẫu một cách bình thường
+
+                // Gửi biểu mẫu đặt hàng bằng Ajax tại đây
+                var formData = $(this).serialize();
+                $.ajax({
+                    type: 'POST',
+                    url: $(this).attr('action'),
+                    data: formData,
+                    success: function(response) {
+                        // Hiển thị thông báo thành công
+                        $('.checkout-form').hide();
+                        $('.success-message').show();
+                    },
+                    error: function(response) {
+                        // Xử lý lỗi nếu cần thiết
+                    }
+                });
+            });
+        });
+    </script>
+
 @endsection

@@ -29,7 +29,7 @@ class AuthController extends Controller
         ], $messages);
         $data = $request->only('email', 'password');
         if (Auth::attempt($data)) {
-            return redirect()->route('user.index');
+            return redirect()->route('user.index')->with('success', 'Đăng nhập thành công!');   
         } else {
             return back()->withErrors($validator)->withInput();
         }

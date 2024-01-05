@@ -37,11 +37,11 @@ class CustomerController extends Controller
     public function register()
     {
 
+
         return view('customer.register');
     }
-    public function checkRegister(Request $request)
+    public function checkRegister(RegisterRequest $request)
     {
-
         $customer = new Customer();
         $customer->name = $request->name;
         $customer->phone = $request->phone;
