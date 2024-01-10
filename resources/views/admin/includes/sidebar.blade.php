@@ -53,11 +53,19 @@
         <span class="app-brand-text demo menu-text fw-bold ms-2">Sneat</span>
       </a>
 
+      <nav style="margin-left: 50px;">
+          <li class="nav-item dropdown">
+              <select class="changeLang">
+                  <option value="en" {{ session()->get('locale') == 'en' ? 'selected' : '' }}>EN</option>
+                  <option value="vn" {{ session()->get('locale') == 'vn' ? 'selected' : '' }}>VN</option>
+              </select>
+          </li>
+      </nav>
+
       <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
         <i class="bx bx-chevron-left bx-sm align-middle"></i>
       </a>
     </div>
-
     <div class="menu-inner-shadow"></div>
 
     <ul class="menu-inner py-1">
@@ -68,104 +76,55 @@
               class="menu-link">
 
               <i  class="menu-icon tf-icons bx bx-home-circle"></i>
-              <div data-i18n="Trang chủ">Trang chủ</div>
+              <div data-i18n="Trang chủ">{{__('language.home_page')}}</div>
             </a>
           </li>
 
-      <!-- Front Pages -->
-      <li class="menu-item">
-        <a href="javascript:void(0);" class="menu-link menu-toggle">
-          <i class="menu-icon tf-icons bx bx-store"></i>
-          <div data-i18n="Front Pages">Front Pages</div>
-          <div class="badge bg-label-primary fs-tiny rounded-pill ms-auto">Pro</div>
-        </a>
-        <ul class="menu-sub">
-          <li class="menu-item">
-            <a
-              href="https://demos.themeselection.com/sneat-bootstrap-html-admin-template/html/front-pages/landing-page.html"
-              class="menu-link"
-              >
-              <div data-i18n="Landing">Landing</div>
-            </a>
-          </li>
-          <li class="menu-item">
-            <a
-              href="https://demos.themeselection.com/sneat-bootstrap-html-admin-template/html/front-pages/pricing-page.html"
-              class="menu-link"
-              >
-              <div data-i18n="Pricing">Pricing</div>
-            </a>
-          </li>
-          <li class="menu-item">
-            <a
-              href="https://demos.themeselection.com/sneat-bootstrap-html-admin-template/html/front-pages/payment-page.html"
-              class="menu-link"
-              >
-              <div data-i18n="Payment">Payment</div>
-            </a>
-          </li>
-          <li class="menu-item">
-            <a
-              href="https://demos.themeselection.com/sneat-bootstrap-html-admin-template/html/front-pages/checkout-page.html"
-              class="menu-link"
-              >
-              <div data-i18n="Checkout">Checkout</div>
-            </a>
-          </li>
-          <li class="menu-item">
-            <a
-              href="https://demos.themeselection.com/sneat-bootstrap-html-admin-template/html/front-pages/help-center-landing.html"
-              class="menu-link"
-              >
-              <div data-i18n="Help Center">Help Center</div>
-            </a>
-          </li>
-        </ul>
-      </li>
+
 
       <!-- Tables -->
-      <li class="menu-header small text-uppercase"><span class="menu-header-text">Tables</span></li>
+      <li class="menu-header small text-uppercase"><span class="menu-header-text">{{__('language.table')}}</span></li>
 
       <!-- Forms -->
       <li class="menu-item">
         <a href="javascript:void(0);" class="menu-link menu-toggle">
-          <i class="menu-icon tf-icons bx bx-home-circle"></i>
-          <div data-i18n="Trang chủ">Table</div>
+          <i class="menu-icon tf-icons bx bx bx-dock-top"></i>
+          <div data-i18n="Trang chủ">{{__('language.table')}}</div>
         </a>
         <ul class="menu-sub">
           <li class="menu-item">
             <a href="{{route('category.index')}}" class="menu-link">
-              <div data-i18n="Basic Inputs">Category</div>
+              <div data-i18n="Basic Inputs">{{__('language.category')}}</div>
             </a>
           </li>
           <li class="menu-item">
             <a href="{{route('product.index')}}" class="menu-link">
-              <div data-i18n="Input groups">Product</div>
+              <div data-i18n="Input groups">{{__('language.product')}}</div>
             </a>
           </li>
           <li class="menu-item">
             <a href="{{route('customer.index')}}" class="menu-link">
-              <div data-i18n="Input groups">Customer</div>
+              <div data-i18n="Input groups">{{__('language.customer')}}</div>
             </a>
           </li>
           <li class="menu-item">
             <a href="{{route('order.index')}}" class="menu-link">
-              <div data-i18n="Input groups">Order</div>
+              <div data-i18n="Input groups">{{__('language.order')}}</div>
             </a>
           </li>
           <li class="menu-item">
             <a href="{{route('user.index')}}" class="menu-link">
-              <div data-i18n="Input groups">User</div>
+              <div data-i18n="Input groups">{{__('language.user')}}</div>
             </a>
           </li>
           <li class="menu-item">
             <a href="{{route('group.index')}}" class="menu-link">
-              <div data-i18n="Input groups">Groups</div>
+              <div data-i18n="Input groups">{{__('language.group')}}</div>
             </a>
           </li>
           <li class="menu-item">
             <a href="{{route('product.trash')}}" class="menu-link">
-              <div data-i18n="Input groups">Trash</div>
+              <div data-i18n="Input groups">{{__('language.trash')}}</div>
             </a>
           </li>
 
@@ -173,102 +132,30 @@
       </li>
       <!-- Pages -->
 
-      <li class="menu-item">
-        <a href="javascript:void(0);" class="menu-link menu-toggle">
-          <i class="menu-icon tf-icons bx bx-dock-top"></i>
-          <div data-i18n="Account Settings">Account Settings</div>
-        </a>
-        <ul class="menu-sub">
-          <li class="menu-item">
-            <a href="pages-account-settings-account.html" class="menu-link">
-              <div data-i18n="Account">Account</div>
-            </a>
-          </li>
-          <li class="menu-item">
-            <a href="pages-account-settings-notifications.html" class="menu-link">
-              <div data-i18n="Notifications">Notifications</div>
-            </a>
-          </li>
-          <li class="menu-item">
-            <a href="pages-account-settings-connections.html" class="menu-link">
-              <div data-i18n="Connections">Connections</div>
-            </a>
-          </li>
-        </ul>
-      </li>
+      <li class="menu-header small text-uppercase"><span class="menu-header-text">{{__('language.account')}}</span></li>
       <li class="menu-item">
         <a href="javascript:void(0);" class="menu-link menu-toggle">
           <i class="menu-icon tf-icons bx bx-lock-open-alt"></i>
-          <div data-i18n="Authentications">Authentications</div>
+          <div data-i18n="Authentications">{{__('language.account_authentication')}}</div>
         </a>
         <ul class="menu-sub">
           <li class="menu-item">
             <a href="auth-login-basic.html" class="menu-link" >
-              <div data-i18n="Basic">Login</div>
+              <div data-i18n="Basic">{{__('language.login')}}</div>
             </a>
           </li>
           <li class="menu-item">
             <a href="auth-register-basic.html" class="menu-link" >
-              <div data-i18n="Basic">Register</div>
+              <div data-i18n="Basic">{{__('language.register')}}</div>
             </a>
           </li>
           <li class="menu-item">
             <a href="auth-forgot-password-basic.html" class="menu-link" >
-              <div data-i18n="Basic">Forgot Password</div>
+              <div data-i18n="Basic">{{__('language.forgot_password')}}</div>
             </a>
           </li>
         </ul>
       </li>
-      <li class="menu-item">
-        <a href="javascript:void(0);" class="menu-link menu-toggle">
-          <i class="menu-icon tf-icons bx bx-cube-alt"></i>
-          <div data-i18n="Misc">Misc</div>
-        </a>
-        <ul class="menu-sub">
-          <li class="menu-item">
-            <a href="pages-misc-error.html" class="menu-link">
-              <div data-i18n="Error">Error</div>
-            </a>
-          </li>
-          <li class="menu-item">
-            <a href="pages-misc-under-maintenance.html" class="menu-link">
-              <div data-i18n="Under Maintenance">Under Maintenance</div>
-            </a>
-          </li>
-        </ul>
-      </li>
-
-
-      <!-- Extended components -->
-      <li class="menu-item">
-        <a href="javascript:void(0)" class="menu-link menu-toggle">
-          <i class="menu-icon tf-icons bx bx-copy"></i>
-          <div data-i18n="Extended UI">Extended UI</div>
-        </a>
-        <ul class="menu-sub">
-          <li class="menu-item">
-            <a href="extended-ui-perfect-scrollbar.html" class="menu-link">
-              <div data-i18n="Perfect Scrollbar">Perfect scrollbar</div>
-            </a>
-          </li>
-          <li class="menu-item">
-            <a href="extended-ui-text-divider.html" class="menu-link">
-              <div data-i18n="Text Divider">Text Divider</div>
-            </a>
-          </li>
-        </ul>
-      </li>
-
-      <li class="menu-item">
-        <a href="icons-boxicons.html" class="menu-link">
-          <i class="menu-icon tf-icons bx bx-crown"></i>
-          <div data-i18n="Boxicons">Boxicons</div>
-        </a>
-      </li>
-
-
-      <!-- Misc -->
-      <li class="menu-header small text-uppercase"><span class="menu-header-text">Misc</span></li>
       <li class="menu-item">
         <a
           href="https://github.com/themeselection/sneat-html-admin-template-free/issues"
@@ -289,3 +176,57 @@
       </li>
     </ul>
   </aside>
+
+  <style>
+    /* Thêm CSS cho phần select */
+    .changeLang {
+        padding: 5px;
+        font-size: 14px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        background-color: #fff;
+        color: #333;
+    }
+
+    /* Thêm CSS cho phần dropdown */
+    .dropdown-menu {
+        min-width: 150px;
+    }
+
+    .dropdown-menu .dropdown-item {
+        font-size: 14px;
+    }
+
+    .dropdown-menu .dropdown-item:hover {
+        background-color: #f8f9fa;
+    }
+
+    /* Thêm CSS cho navbar */
+    nav {
+        margin-left: 50px;
+    }
+
+    .nav-item {
+        display: inline-block;
+        position: relative;
+    }
+
+    .nav-item::after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        bottom: -2px;
+        left: 0;
+        background-color: #333;
+        transform: scaleX(0);
+        transition: transform 0.3s ease;
+    }
+
+    .nav-item:hover::after {
+        transform: scaleX(1);
+    }
+</style>

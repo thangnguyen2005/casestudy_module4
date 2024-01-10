@@ -10,7 +10,7 @@
                                 <div class="pagetitle">
 
                                     <div class="card-header py-3">
-                                        <h3 class="m-0 font-weight-bold text-primary" style="text-align: center">Chức vụ</h3>
+                                        <h3 class="m-0 font-weight-bold text-primary" style="text-align: center">{{ __('language.position') }}</h3>
                                     </div>
                                 </div>
                                 <div class="page-section">
@@ -21,13 +21,10 @@
                                             <div class="card-body">
                                                 <hr>
                                                 <div class="form-group">
-                                                    <label for="tf1">Tên Quyền:</label> {{ $group->name }}
-                                                </div><br>
-                                                <div class="form-group">
-
+                                                    <label class="w3-button w3-blue">{{ __('language.grant_full_permissions') }} </label> 
                                                     <input type="checkbox" id="checkAll" class="form-check-input"
-                                                        value="Quyền hạn">
-                                                    <label class="w3-button w3-blue">{{ __('Cấp toàn bộ quyền') }}
+                                                        value="">
+                                                        <hr>
                                                         <div class="row">
                                                             @foreach ($group_names as $group_name => $roles)
                                                                 <div class="col-lg-6">
@@ -56,9 +53,9 @@
                                                         </div>
                                                 </div>
                                                 <div class="form-actions">
-                                                    <button class="btn btn-outline-success" type="submit">Duyệt</button>
+                                                    <button class="btn btn-outline-success" type="submit">{{ __('language.submit') }}</button>
                                                     <a href="{{ route('group.index') }}" class="btn btn-outline-danger"
-                                                        type="submit">Hủy</a>
+                                                        type="submit">{{ __('language.go_back') }}</a>
                                                 </div>
                                             </div>
                                         </div>

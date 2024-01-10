@@ -7,6 +7,10 @@ use App\Http\Requests\RegisterRequest;
 use Illuminate\Http\Request;
 use App\Models\Customer;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
+use App\Mail\ResetPassword;
 
 class CustomerController extends Controller
 {
@@ -122,4 +126,74 @@ class CustomerController extends Controller
         $request->session()->regenerateToken();
         return redirect()->route('shop.index');
     }
+
+
+    public function forgotPassword()
+    {
+        return view('customer.forgot-password');
+    }
+
+    /**
+     * Validate token for forgot password
+     * @param token
+     * @return view
+     */
+    public function forgotPasswordValidate($token)
+    {
+        $customer = Customer::where('token', $token)->where('is_verified', 0)->first();
+        if ($customer) {
+            $email = $customer->email;
+            return view('customer.change-password', compact('email'));
+        }
+        return redirect()->route('forgot-password')->with('failed', 'Password reset link is expired');
+    }
+
+    /**
+     * Reset password
+     * @param request
+     * @return response
+     */
+    public function resetPassword(Request $request)
+    {
+        $this->validate($request, [
+            'email' => 'required|email',
+        ]);
+
+        $customer = Customer::where('email', $request->email)->first();
+        if (!$customer) {
+            return back()->with('failed', 'Failed! email is not registered.');
+        }
+
+        $token = Str::random(60);
+
+        $customer['token'] = $token;
+        $customer['is_verified'] = 0;
+        $customer->save();
+
+        return back()->with('failed', 'Failed! there is some issue with email provider');
+    }
+
+    /**
+     * Change password
+     * @param request
+     * @return response
+     */
+    public function updatePassword(Request $request)
+{
+    $this->validate($request, [
+        'email' => 'required',
+        'password' => 'required|min:6',
+        'confirm_password' => 'required|same:password'
+    ]);
+
+    $customer = Customer::where('email', $request->email)->where('is_verified', 0)->where('token', $request->token)->first();
+    if ($customer) {
+        $customer->is_verified = 1;
+        $customer->token = '';
+        $customer->password = Hash::make($request->password);
+        $customer->save();
+        return redirect()->route('login')->with('success', 'Success! password has been changed');
+    }
+    return redirect()->route('forgot-password')->with('failed', 'Failed! something went wrong');
+}
 }

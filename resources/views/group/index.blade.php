@@ -3,7 +3,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <div class="card-header py-3">
-        <h3 class="m-0 font-weight-bold text-primary offset-4" style="text-align: center">Danh sách nhân viên</h3>
+        <h3 class="m-0 font-weight-bold text-primary offset-4" style="text-align: center">{{ __('language.list_of_employee') }}</h3>
     </div>
     <hr>
     <main class="page-content">
@@ -15,7 +15,7 @@
                         </header>
                         <nav aria-label="breadcrumb">
                             @if (Auth::user()->hasPermission('Group_create'))
-                                <a href="{{ route('group.create') }}" class="btn btn-outline-primary">Tạo chức vụ</a>
+                                <a href="{{ route('group.create') }}" class="btn btn-outline-primary">{{ __('language.create_position') }}</a>
                             @endif
                         </nav>
                         <div>
@@ -32,10 +32,10 @@
     }}'>
                                 <thead>
                                     <tr>
-                                        <th>STT</th>
-                                        <th>Tên</th>
-                                        <th>Người đảm nhận</th>
-                                        <th data-breakpoints="xs">Tùy Chỉnh</th>
+                                        <th>{{ __('language.Order_Numerical') }}</th>
+                                        <th>{{ __('language.name') }}</th>
+                                        <th>{{ __('language.undertake_person') }}</th>
+                                        <th data-breakpoints="xs">{{ __('language.your_actions') }}</th>
                                     </tr>
                                 </thead>
                                 <tbody id="myTable">
@@ -51,16 +51,16 @@
                                                     @method('PUT')
                                                     @if (Auth::user()->hasPermission('Group_update'))
                                                         <a class="btn btn-outline-info"
-                                                            href="{{ route('group.detail', $group->id) }}">Trao Quyền</a>
+                                                            href="{{ route('group.detail', $group->id) }}">{{ __('language.authorize') }}</a>
                                                     @endif
 
                                                     @if (Auth::user()->hasPermission('Group_update'))
                                                         <a href="{{ route('group.edit', $group->id) }}"
-                                                            class="btn btn-outline-warning">Sửa</a>
+                                                            class="btn btn-outline-warning">{{ __('language.update') }}</a>
                                                     @endif
                                                     @if (Auth::user()->hasPermission('Group_forceDelete'))
                                                         <a href="{{ route('group.destroy', $group->id) }}"
-                                                            id="{{ $group->id }}" class="btn btn-outline-danger">Xóa</a>
+                                                            id="{{ $group->id }}" class="btn btn-outline-danger">{{ __('language.delete') }}</a>
                                                     @endif
                                                 </form>
                                             </td>

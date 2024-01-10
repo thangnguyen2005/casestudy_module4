@@ -6,6 +6,8 @@ use App\Http\Requests\AuthRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Password;
+use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
 
 class AuthController extends Controller
 {
@@ -29,7 +31,7 @@ class AuthController extends Controller
         ], $messages);
         $data = $request->only('email', 'password');
         if (Auth::attempt($data)) {
-            return redirect()->route('user.index')->with('success', 'Đăng nhập thành công!');   
+            return redirect()->route('user.index')->with('success', 'Đăng nhập thành công!');
         } else {
             return back()->withErrors($validator)->withInput();
         }

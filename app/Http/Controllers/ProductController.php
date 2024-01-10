@@ -12,15 +12,15 @@ class ProductController extends Controller
 {
     public function index()
     {
-    $products = Product::with('category')->latest('created_at')->paginate(3);
-    $startingNumber = ($products->currentPage() - 1) * $products->perPage() + 1;
+        $products = Product::with('category')->latest('created_at')->paginate(10);
+        $startingNumber = ($products->currentPage() - 1) * $products->perPage() + 1;
 
-    return view('product.index', compact('products', 'startingNumber'));
-}
+        return view('product.index', compact('products', 'startingNumber'));
+    }
 
     public function create()
     {
-    $this->authorize('create', Product::class);
+        $this->authorize('create', Product::class);
 
         $categories = Category::all();
         $products = Product::all();
@@ -28,29 +28,32 @@ class ProductController extends Controller
     }
 
     public function store(ProductRequest $request)
-    {
-        $product = new Product();
-        $product->name = $request->name;
-        $product->slug = $request->slug;
-        $product->price = $request->price;
-        $product->description = $request->description;
-        $product->quantity = $request->quantity;
-        $product->status = $request->status;
-        $product->category_id = $request->category_id;
-        if ($request->hasFile('image')) {
-            $image = $request->file('image');
-            $path = 'admin/uploads/product';
-            $newImageName = $image->getClientOriginalName();
-            $newImageName = pathinfo($newImageName, PATHINFO_FILENAME) . '_' . time() . '.' . $image->getClientOriginalExtension();
-            $image->move(public_path($path), $newImageName);
-            $product->image = $newImageName;
-        }
-        $product->save();
-
-        $product = Product::orderBy('created_at', 'desc')->paginate(3);
-        // return redirect()->route('product.index', compact('product'));
-        return redirect()->route('product.index', compact('product'))->with('success', 'Thêm thành công!');
+{
+    $product = new Product();
+    $product->name = $request->name;
+    $product->slug = $request->slug;
+    $product->price = $request->price;
+    $product->description = $request->description;
+    $product->quantity = $request->quantity;
+    $product->status = $request->status;
+    $product->category_id = $request->category_id;
+    if ($request->hasFile('image')) {
+        $image = $request->file('image');
+        $path = 'admin/uploads/product';
+        $newImageName = $image->getClientOriginalName();
+        $newImageName = pathinfo($newImageName, PATHINFO_FILENAME) . '_' . time() . '.' . $image->getClientOriginalExtension();
+        $image->move(public_path($path), $newImageName);
+        $product->image = $newImageName;
     }
+    $product->save();
+
+    if ($product->quantity == 0) {
+        // Hiển thị thông báo "Hết hàng" hoặc thực hiện các hành động khác khi hết hàng
+        return redirect()->back()->with('error', 'Hết hàng');
+    }
+
+    return redirect()->route('product.index')->with('success', 'Thêm thành công!');
+}
 
     public  function trash()
     {
@@ -106,23 +109,22 @@ class ProductController extends Controller
         return redirect()->back()->with('success', 'Xóa thành công!');
     }
     public function search(Request $request)
-    {
-        $keyword = $request->input('keyword');
-        $products = Product::where(function ($query) use ($keyword) {
-            $query->where('name', 'LIKE', "%$keyword%")
-                ->orWhere('slug', 'LIKE', "%$keyword%")
-                ->orWhere('price', 'LIKE', "%$keyword%")
-                ->orWhere('description', 'LIKE', "%$keyword%")
-                ->orWhere('quantity', 'LIKE', "%$keyword%")
-                ->orWhere('status', 'LIKE', "%$keyword%");
+{    $keyword = $request->input('keyword');
+    $products = Product::where(function ($query) use ($keyword) {
+        $query->where('name', 'LIKE', "%$keyword%")
+            ->orWhere('slug', 'LIKE', "%$keyword%")
+            ->orWhere('price', 'LIKE', "%$keyword%")
+            ->orWhere('description', 'LIKE', "%$keyword%")
+            ->orWhere('quantity', 'LIKE', "%$keyword%")
+            ->orWhere('status', 'LIKE', "%$keyword%");
+    })
+        ->whereHas('category', function ($query) use ($keyword) {
+            $query->where('name', 'LIKE', "%$keyword%");
         })
-            ->orWhereHas('category', function ($query) use ($keyword) {
-                $query->where('name', 'LIKE', "%$keyword%");
-            })
-            ->paginate(3);
+        ->paginate(3);
 
-        return view('product.index', compact('products'));
-    }
+    return view('product.index', compact('products'));
+}
     public function show($id)
     {
         $product = Product::findOrFail($id);
@@ -146,4 +148,3 @@ class ProductController extends Controller
         return redirect()->route('product.trash');
     }
 }
-

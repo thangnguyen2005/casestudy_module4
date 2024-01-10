@@ -21,10 +21,10 @@ border-radius:50%;
                                         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
                                         crossorigin="anonymous">
                                     <div class="card-header py-3">
-                                        <h3 class="m-0 font-weight-bold text-primary" style="text-align: center">Nhân sự</h3>
+                                        <h3 class="m-0 font-weight-bold text-primary" style="text-align: center">{{ __('language.Personnel') }}</h3>
                                     </div>
                                     <hr>
-                        <a href="{{ route('user.create') }}" class="btn btn-outline-primary">Đăng ký tài khoản nhân sự</a>
+                        <a href="{{ route('user.create') }}" class="btn btn-outline-primary">{{ __('language.Register_for_an_HR_account') }}</a>
                     </header>
                     <hr>
                     <div>
@@ -42,12 +42,12 @@ border-radius:50%;
 
                             <thead>
                                 <tr>
-                                    <th data-breakpoints="xs">Stt</th>
-                                    <th>Avatar</th>
-                                    <th>Tên</th>
-                                    <th>Phone</th>
-                                    <th>Chức vụ</th>
-                                    <th data-breakpoints="xs">Tùy Chỉnh</th>
+                                    <th data-breakpoints="xs">{{ __('language.order_Numerical') }}</th>
+                                    <th>{{ __('language.avatar') }}</th>
+                                    <th>{{ __('language.name') }}</th>
+                                    <th>{{ __('language.phone') }}</th>
+                                    <th>{{ __('language.position') }}</th>
+                                    <th data-breakpoints="xs">{{ __('language.your_actions') }}</th>
                                 </tr>
                             </thead>
                             <tbody id="myTable">
@@ -61,11 +61,11 @@ border-radius:50%;
                                         <td>
                                             @if (Auth::user()->hasPermission('User_update'))
                                             <a href="{{ route('user.edit', $user->id) }}"
-                                                class="btn btn-outline-warning">Sửa</a>
+                                                class="btn btn-outline-warning">{{ __('language.update') }}</a>
                                             @endif
                                             @if (Auth::user()->hasPermission('User_forceDelete'))
                                             <a data-href="{{ route('user.destroy', $user->id) }}"
-                                                id="{{ $user->id }}" class="btn btn-outline-danger deleteIcon">Xóa</i></a>
+                                                id="{{ $user->id }}" class="btn btn-outline-danger deleteIcon">{{ __('language.delete') }}</i></a>
                                             @endif
                                         </td>
                                     </tr>

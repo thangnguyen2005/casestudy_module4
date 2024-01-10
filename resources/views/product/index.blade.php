@@ -1,16 +1,14 @@
 @extends('admin.master')
 @section('content')
-<link rel="stylesheet"
-href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
-integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-crossorigin="anonymous">
-<div class="card-header py-3">
-<h3 class="m-0 font-weight-bold text-primary" style="text-align: center">Sản phẩm</h3>
-</div>
-<hr>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <div class="card-header py-3">
+        <h3 class="m-0 font-weight-bold text-primary" style="text-align: center">{{ __('language.product') }}</h3>
+    </div>
+    <hr>
 
     <div class="wrapper">
-        <nav>
+        <nav>   
             <div class="input-group">
                 <div class="form-outline" data-mdb-input-init>
                     <form action="{{ route('product.search') }}" method="GET">
@@ -23,14 +21,7 @@ crossorigin="anonymous">
         <nav>
             <a href="/product/create" class="btn btn-outline-primary">{{ __('language.add_new') }}</a>
         </nav>
-        <nav style="margin-left: 600px;">
-            <li class="nav-item dropdown">
-                <select class="changeLang">
-                    <option value="en" {{ session()->get('locale') == 'en' ? 'selected' : '' }}>EN</option>
-                    <option value="vn" {{ session()->get('locale') == 'vn' ? 'selected' : '' }}>VN</option>
-                </select>
-            </li>
-        </nav>
+
     </div>
 
     <div class="card">
@@ -57,13 +48,12 @@ crossorigin="anonymous">
                             <td>{{ $product->slug }}</td>
                             <td>{{ number_format($product->price) }}</td>
                             <td>{{ Str::limit($product->description, 10) }}</td>
-
                             <td>{{ $product->quantity }}</td>
                             <td>
-                                @if ($product->status == 1)
-                                    Còn hàng
-                                @else
+                                @if ($product->quantity == 0)
                                     Hết hàng
+                                @else
+                                    Còn hàng
                                 @endif
                             </td>
                             <td>{{ $product->category->name }}</td>
@@ -73,16 +63,17 @@ crossorigin="anonymous">
                             </td>
                             <td>
                                 @if (Auth::user()->hasPermission('Product_delete'))
-                                <form action="{{ route('product.softdeletes', $product->id) }}" method="post">
-                                    @method('PUT')
-                                    @csrf
-                                    <button
-                                    onclick="return confirm('Bạn có muốn chuyển danh mục này vào thùng rác không ?');"
-                                    class="btn btn-outline-danger">Xóa</button>
-                                    @endif
+                                    <form action="{{ route('product.softdeletes', $product->id) }}" method="post">
+                                        @method('PUT')
+                                        @csrf
+                                        <button
+                                            onclick="return confirm('Bạn có muốn chuyển danh mục này vào thùng rác không ?');"
+                                            class="btn btn-outline-danger">{{ __('language.delete') }}</button>
+                                @endif
                                 </form>
                                 @if (Auth::user()->hasPermission('Product_update'))
-                                <a href="{{ route('product.edit', [$product->id]) }}" class="btn btn-outline-info">Sửa</a>
+                                    <a href="{{ route('product.edit', [$product->id]) }}"
+                                        class="btn btn-outline-info">{{ __('language.update') }}</a>
                                 @endif
                             </td>
                         </tr>

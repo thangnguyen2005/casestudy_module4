@@ -13,7 +13,7 @@
                                 integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
                                 crossorigin="anonymous">
                             <div class="card-header py-3">
-                                <h3 class="m-0 font-weight-bold text-primary" style="text-align: center">Thay đổi thông tin</h3>
+                                <h3 class="m-0 font-weight-bold text-primary" style="text-align: center">{{ __('language.Change_information') }}</h3>
                             </div>
                             <hr>
                             </header>
@@ -24,7 +24,7 @@
                                     @csrf
                                     <div class="card">
                                         <div class="card-body">
-                                            <legend>Thông tin cơ bản</legend>
+                                            <legend>{{ __('language.basic_information') }}</legend>
                                             <div class="row">
 
                                                 <div class="col-lg-12">
@@ -41,7 +41,7 @@
                                                 </div>
                                                 <div class="col-lg-4">
                                                     <div class="form-group">
-                                                        <label for="tf1">Họ Và Tên<abbr
+                                                        <label for="tf1">{{ __('language.first_and_last_name') }}<abbr
                                                                 name="Trường bắt buộc">*</abbr></label>
                                                         <input name="name" type="text" class="form-control"
                                                             value="{{ $user->name }}">
@@ -53,7 +53,7 @@
                                                 </div>
                                                 <div class="col-lg-4">
                                                     <div class="form-group">
-                                                        <label for="tf1">Số Điện Thoại<abbr
+                                                        <label for="tf1">{{ __('language.phone') }}<abbr
                                                                 name="Trường bắt buộc">*</abbr></label> <input
                                                             name="phone" type="number" class="form-control"
                                                             value="{{ $user->phone }}">
@@ -65,7 +65,7 @@
                                                 </div>
                                                 <div class="col-lg-4">
                                                     <div class="form-group">
-                                                        <label for="tf1">Ngày sinh<abbr
+                                                        <label for="tf1">{{ __('language.Date_of_birth') }}<abbr
                                                                 name="Trường bắt buộc">*</abbr></label> <input
                                                             name="birthday" type="date" class="form-control"
                                                             value="{{ $user->birthday }}">
@@ -78,7 +78,7 @@
                                                 </div>
                                                 <div class="form-group col-lg-4">
                                                     @if (Auth::user()->hasPermission('Group_update'))
-                                                        <label class="control-label" for="flatpickr01">Chức Vụ<abbr
+                                                        <label class="control-label" for="flatpickr01">{{ __('language.position') }}<abbr
                                                                 name="Trường bắt buộc">*</abbr></label>
                                                         <select name="group_id" id="" class="form-control">
                                                             <option value="">--Vui lòng chọn--</option>
@@ -95,7 +95,7 @@
                                                     @endif
                                                 </div>
                                                 <div class="form-group col-lg-4">
-                                                    <label class="control-label" for="flatpickr01">Giới Tính<abbr
+                                                    <label class="control-label" for="flatpickr01">{{ __('language.gender') }}<abbr
                                                             name="Trường bắt buộc">*</abbr></label>
                                                     <select name="gender" id="" value="{{ $user->gender }}"
                                                         class="form-control">
@@ -109,7 +109,7 @@
                                                     @endif
                                                 </div>
                                                 <div class="form-group has-warning">
-                                                    <label class="col-lg-3 control-label">image</label>
+                                                    <label class="col-lg-3 control-label">{{ __('language.image') }}</label>
                                                     <div class="col-lg-4">
                                                         <input accept="image/*" type='file' value="{{ $user->image }}"
                                                             id="inputFile" name="image" /><br>
@@ -126,7 +126,7 @@
                                                 {{-- địa chỉ --}}
                                                 <div class="col-lg-12">
                                                     <div class="form-group">
-                                                        <label for="tf1">Địa chỉ<abbr
+                                                        <label for="tf1">{{ __('language.address') }}<abbr
                                                                 name="Trường bắt buộc">*</abbr></label> <input
                                                             name="address" type="text" class="form-control"
                                                             value="{{ $user->address }}">
@@ -141,8 +141,8 @@
                                             </div>
                                             <div class="form-actions">
                                                 <br><br><br><br>
-                                                <button class="btn btn-outline-success" type="submit">Lưu thay đổi</button>
-                                                <a class="btn btn-outline-danger" href="{{ route('user.index') }}">Quay lại</a>
+                                                <button class="btn btn-outline-success" type="submit">{{ __('language.submit') }}</button>
+                                                <a class="btn btn-outline-danger" href="{{ route('user.index') }}">{{ __('language.go_back') }}</a>
                                             </div>
                                         </div>
                                 </form>

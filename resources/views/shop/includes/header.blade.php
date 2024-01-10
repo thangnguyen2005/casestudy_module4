@@ -15,7 +15,6 @@
                     <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">
                         @if (isset(Auth()->guard('customers')->user()->name))
                             {{ Auth()->guard('customers')->user()->name }}
-
                         @else
                             My Account
                         @endif
@@ -69,16 +68,14 @@
             </a>
         </div>
         <div class="col-lg-4 col-6 text-left">
-            <form action="">
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search for products">
-                    <div class="input-group-append">
-                        <span class="input-group-text bg-transparent text-primary">
-                            <i class="fa fa-search"></i>
-                        </span>
-                    </div>
-                </div>
-            </form>
+            <form autocomplete="off" class="form-inline my-2 my-lg-0" action="{{route('shop.index')}}" method="GET">
+                @csrf
+                  <input class="form-control mr-sm-2" id="keywords" type="search" name="tukhoa" placeholder="Tìm kiếm laptop...." aria-label="Search">
+                  <div id="search_ajax"></div>
+                  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm kiếm</button>
+                   {{--  <input class="switch_color_xam" type="checkbox" id="switch_color" data-on="Đen" data-off="Xám" data-toggle="toggle" data-onstyle="dark" data-offstyle="light" data-style="border"> --}}
+
+                </form>
         </div>
         <div class="col-lg-4 col-6 text-right">
             <p class="m-0">Customer Service</p>
@@ -86,3 +83,44 @@
         </div>
     </div>
 </div>
+
+<style>
+    .d-inline-flex.align-items-center {
+        display: inline-flex;
+        align-items: center;
+    }
+
+    .btn-group {
+        position: relative;
+        display: inline-flex;
+        vertical-align: middle;
+    }
+
+    .btn.btn-sm.btn-light.dropdown-toggle {
+        background-color: #fff;
+        border: 1px solid #ccc;
+        color: #333;
+        padding: 0.25rem 0.5rem;
+        font-size: 0.875rem;
+        line-height: 1.5;
+        border-radius: 0.2rem;
+    }
+
+    .dropdown-menu.dropdown-menu-right {
+        right: 0;
+        left: auto;
+    }
+
+    .dropdown-item {
+        display: block;
+        width: 100%;
+        padding: 0.25rem 1.5rem;
+        clear: both;
+        font-weight: 400;
+        color: #212529;
+        text-align: inherit;
+        white-space: nowrap;
+        background-color: transparent;
+        border: 0;
+    }
+</style>

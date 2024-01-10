@@ -4,7 +4,7 @@
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
 <div class="card-header py-3">
-    <h3 class="m-0 font-weight-bold text-primary" style="text-align: center">Tài khoản người dùng</h3>
+    <h3 class="m-0 font-weight-bold text-primary" style="text-align: center">{{ __('language.user_account') }}</h3>
 </div>
     <!-- DataTales Example -->
     <div class="card shadow mb-4">

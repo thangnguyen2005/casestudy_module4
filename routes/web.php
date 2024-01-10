@@ -4,12 +4,15 @@ use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\GroupController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LangController;
 use App\Http\Controllers\LoginGoogleController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ResetPasswordController;
+use App\Http\Controllers\SearchController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\UserController;
 
@@ -85,7 +88,7 @@ Route::prefix('/')->middleware(['auth', 'preventBackHistory'])->group(function (
         Route::put('/update/{id}', [UserController::class, 'update'])->name('user.update');
         Route::delete('destroy/{id}', [UserController::class, 'destroy'])->name('user.destroy');
         Route::get('/editpass/{id}', [UserController::class, 'editpass'])->name('user.editpass');
-        Route::put('/updatepass/{id}', [UserController::class, 'updatepass'])->name('user.updatepass');
+        Route::put('/updatepass/{id}', [UserController::class, 'adminUpdatepass'])->name('user.updatepass');
         Route::get('/adminpass/{id}', [UserController::class, 'adminpass'])->name('user.adminpass');
         Route::put('/adminUpdatePass/{id}', [UserController::class, 'adminUpdatePass'])->name('user.adminUpdatePass');
     });
@@ -107,6 +110,8 @@ Route::get('/customer/register', [CustomerController::class, 'register'])->name(
 Route::post('/customer/register', [CustomerController::class, 'checkRegister'])->name('customer.checkRegister');
 Route::get('/customer/login', [CustomerController::class, 'login'])->name('customer.login');
 Route::post('/customer/login', [CustomerController::class, 'checkLogin'])->name('customer.checkLogin');
+Route::get('/customer/forgetPass', [CustomerController::class, 'forgetPass'])->name('customer.forgetPass');
+Route::post('/customer/revoverPass', [CustomerController::class, 'revoverPass'])->name('customer.revoverPass');
 Route::post('/customer/logout', [CustomerController::class, 'logout'])->name('customer.logout');
 
 Route::get('/shop/checkout', [ShopController::class, 'checkOut'])->name('shop.checkOut');
@@ -121,6 +126,14 @@ Route::get('/shop/master', function () {
 });
 
 Route::get('/shop', [ShopController::class, 'index'])->name('shop.index');
+Route::get('search', [ShopController::class, 'autosearch'])->name('search');
+
+Route::post('/autocomplete-ajax',[ShopController::class,'autocomplete_ajax']);
+
+
+
+Route::get('/load-more-data', [ShopController::class,'loadMoreData'])->name('load.more');
+
 Route::get('cart', [ShopController::class, 'cart'])->name('cart');
 Route::get('products/{id}', [ShopController::class, 'detail'])->name('detail');
 Route::get('add-to-cart/{id}', [ShopController::class, 'addToCart'])->name('add.to.cart');
@@ -132,3 +145,17 @@ Route::get('lang/change', [LangController::class, 'change'])->name('changeLang')
 // login by google
 Route::get('auth/google', [LoginGoogleController::class, 'redirectToGoogle']);
 Route::get('auth/google/callback', [LoginGoogleController::class, 'handleGoogleCallback']);
+
+Route::get('forgot-password', [CustomerController::class, 'forgotPassword'])->name('forgot-password');
+Route::get('forgot-password/{token}', [CustomerController::class, 'forgotPasswordValidate']);
+Route::post('forgot-password', [CustomerController::class, 'resetPassword'])->name('forgot-password');
+
+Route::put('reset-password', [CustomerController::class, 'updatePassword'])->name('reset-password');
+
+
+
+
+
+
+// Route::get('/search', 'SearchController@getSearch')->name('search');
+// Route::post('/searchajax', 'SearchController@getSearchAjax')->name('search.ajax');

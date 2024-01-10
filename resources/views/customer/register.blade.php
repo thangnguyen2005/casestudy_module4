@@ -84,7 +84,7 @@
       <h1>Trang Đăng Ký</h1>
 
       <div class="form-group">
-        <label for="name">Name</label>
+        <label for="name">Tên Đăng Nhập</label>
         <input type="text" name="name" id="name" class="form-control">
     </div>
     @error('name')
@@ -92,7 +92,7 @@
         @enderror
 
       <div class="form-group">
-        <label for="address">Address</label>
+        <label for="address">Địa Chỉ</label>
         <input type="text" name="address" id="address" class="form-control">
     </div>
     @error('address')
@@ -108,7 +108,7 @@
         @enderror
 
       <div class="form-group">
-        <label for="phone">Phone</label>
+        <label for="phone">Số Điện Thoại</label>
         <input type="text" name="phone" id="phone" class="form-control">
     </div>
     @error('phone')
@@ -116,7 +116,7 @@
         @enderror
 
       <div class="form-group">
-        <label for="psw">Password</label>
+        <label for="psw">Mật Khẩu</label>
         <input type="password" name="psw" id="psw" class="form-control">
     </div>
     @error('password')
@@ -124,13 +124,13 @@
         @enderror
 
       <div class="form-group">
-        <label for="psw-repeat">Repeat Password</label>
+        <label for="psw-repeat">Xác Nhận Mật Khẩu</label>
         <input type="password" name="psw_repeat" id="psw-repeat" class="form-control">
       </div>
 
       <button type="submit" class="btn btn-primary registerbtn">Đăng Ký</button>
 
-      <p class="signin">Bạn Đã Có Tài Khoản? <a href="{{route('customer.login')}}">Đăng nhập</a>.</p>
+      <p class="signin">Bạn Đã Có Tài Khoản? <a href="{{route('customer.login')}}">Đăng Nhập</a>.</p>
     </div>
   </form>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

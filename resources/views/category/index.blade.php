@@ -3,7 +3,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <div class="card-header py-3">
-            <h3 class="m-0 font-weight-bold text-primary" style="text-align: center">Danh mục sản phẩm</h3>
+            <h3 class="m-0 font-weight-bold text-primary" style="text-align: center">{{ __('language.category') }}</h3>
         </div>
         <hr>
     <div class="wrapper">

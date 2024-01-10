@@ -1,13 +1,11 @@
 @extends('admin.master')
 @section('content')
-<link rel="stylesheet"
-href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
-integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-crossorigin="anonymous">
-<div class="card-header py-3">
-<h3 class="m-0 font-weight-bold text-primary" style="text-align: center">Sửa sản phẩm</h3>
-</div>
-<hr>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <div class="card-header py-3">
+        <h3 class="m-0 font-weight-bold text-primary" style="text-align: center">{{ __('language.edit_product') }}</h3>
+    </div>
+    <hr>
     <form action="{{ route('product.update', $product->id) }}" method="post" enctype="multipart/form-data">
         @csrf
         @method('PUT')
@@ -61,7 +59,7 @@ crossorigin="anonymous">
 
         <input type="submit" class="btn btn-outline-success" value="{{ __('language.confirm') }}">
 
-        <a class="btn btn-outline-danger" href="{{ route('product.index') }}">Quay lại</a>
+        <a class="btn btn-outline-danger" href="{{ route('product.index') }}">{{ __('language.go_back') }}</a>
 
     </form>
 @endsection
