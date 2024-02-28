@@ -1,5 +1,6 @@
 @extends('admin.master')
 @section('content')
+
 <main class="page-content">
     <div class="container">
 <section class="wrapper">

@@ -195,4 +195,24 @@ class ShopController extends Controller
         //     return redirect()->route('shop.index');
         // }
     }
+    public function asus()
+    {
+        $products = Product::where('category_id', '23')->get();
+        return view('test.Asus', compact('products'));
+    }
+    public function apple()
+    {
+        $products = Product::where('category_id', '20')->get();
+        return view('test.apple', compact('products'));
+    }
+    public function dell()
+    {
+        $products = Product::where('category_id', '24')->get();
+        return view('test.dell', compact('products'));
+    }
+    public function acer()
+    {
+        $products = Product::where('category_id', '25')->get();
+        return view('test.acer', compact('products'));
+    }
 }

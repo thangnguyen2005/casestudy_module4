@@ -87,11 +87,7 @@
 
       <!-- Forms -->
       <li class="menu-item">
-        <a href="javascript:void(0);" class="menu-link menu-toggle">
-          <i class="menu-icon tf-icons bx bx bx-dock-top"></i>
-          <div data-i18n="Trang chủ">{{__('language.table')}}</div>
-        </a>
-        <ul class="menu-sub">
+        
           <li class="menu-item">
             <a href="{{route('category.index')}}" class="menu-link">
               <div data-i18n="Basic Inputs">{{__('language.category')}}</div>
@@ -132,30 +128,8 @@
       </li>
       <!-- Pages -->
 
-      <li class="menu-header small text-uppercase"><span class="menu-header-text">{{__('language.account')}}</span></li>
-      <li class="menu-item">
-        <a href="javascript:void(0);" class="menu-link menu-toggle">
-          <i class="menu-icon tf-icons bx bx-lock-open-alt"></i>
-          <div data-i18n="Authentications">{{__('language.account_authentication')}}</div>
-        </a>
-        <ul class="menu-sub">
-          <li class="menu-item">
-            <a href="auth-login-basic.html" class="menu-link" >
-              <div data-i18n="Basic">{{__('language.login')}}</div>
-            </a>
-          </li>
-          <li class="menu-item">
-            <a href="auth-register-basic.html" class="menu-link" >
-              <div data-i18n="Basic">{{__('language.register')}}</div>
-            </a>
-          </li>
-          <li class="menu-item">
-            <a href="auth-forgot-password-basic.html" class="menu-link" >
-              <div data-i18n="Basic">{{__('language.forgot_password')}}</div>
-            </a>
-          </li>
-        </ul>
-      </li>
+      <li class="menu-header small text-uppercase"><span class="menu-header-text">{{__('language.support')}}</span></li>
+
       <li class="menu-item">
         <a
           href="https://github.com/themeselection/sneat-html-admin-template-free/issues"

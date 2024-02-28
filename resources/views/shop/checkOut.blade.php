@@ -124,6 +124,11 @@
                         // Hiển thị thông báo thành công
                         $('.checkout-form').hide();
                         $('.success-message').show();
+
+                        // Chuyển hướng về trang chủ sau 2 giây
+                        setTimeout(function() {
+                            window.location.href = "{{ route('shop.index') }}";
+                        }, 100);
                     },
                     error: function(response) {
                         // Xử lý lỗi nếu cần thiết

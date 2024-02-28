@@ -63,4 +63,6 @@ return [
     "register" => "Đăng ký",
     "forgot_password" => "Quên mật khẩu",
     "account" => "Tài khoản",
+    "support" => "Hỗ trợ",
+
 ];

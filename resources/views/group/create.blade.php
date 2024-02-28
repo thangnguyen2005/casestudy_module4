@@ -26,7 +26,7 @@
                                         <div class="form-group has-warning">
                                             <label class="form-label">{{ __('language.position_name') }}</label>
                                                 <input type="text" value="{{ old('name') }}" name="name"
-                                                    class="form-control">
+                                                    class="form-control" required>
                                                 @error('name')
                                                     <div class="text text-danger">{{ $message }}</div>
                                                 @enderror

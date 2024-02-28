@@ -12,7 +12,7 @@
             <label for="name" class="form-label">{{ __('language.name_category') }}</label>
             <input type="text" class="form-control" id="name" name="name"> <br>
             @error('name')
-                <div style="color: red">{{ __('language.name_ct') }}</div>
+                <div style="color: red">{{ $message }}</div>
             @enderror
             <input type="submit" class="btn btn-outline-success" value="{{ __('language.confirm') }}">
 

@@ -114,6 +114,10 @@ Route::get('/customer/forgetPass', [CustomerController::class, 'forgetPass'])->n
 Route::post('/customer/revoverPass', [CustomerController::class, 'revoverPass'])->name('customer.revoverPass');
 Route::post('/customer/logout', [CustomerController::class, 'logout'])->name('customer.logout');
 
+Route::get('asus', [ShopController::class, 'asus'])->name('shop.asus');
+Route::get('apple', [ShopController::class, 'apple'])->name('shop.apple');
+Route::get('dell', [ShopController::class, 'dell'])->name('shop.dell');
+Route::get('acer', [ShopController::class, 'acer'])->name('shop.acer');
 Route::get('/shop/checkout', [ShopController::class, 'checkOut'])->name('shop.checkOut');
 Route::post('/order', [ShopController::class, 'order'])->name('order');
 Route::prefix('order')->group(function () {
@@ -151,11 +155,3 @@ Route::get('forgot-password/{token}', [CustomerController::class, 'forgotPasswor
 Route::post('forgot-password', [CustomerController::class, 'resetPassword'])->name('forgot-password');
 
 Route::put('reset-password', [CustomerController::class, 'updatePassword'])->name('reset-password');
-
-
-
-
-
-
-// Route::get('/search', 'SearchController@getSearch')->name('search');
-// Route::post('/searchajax', 'SearchController@getSearchAjax')->name('search.ajax');

@@ -22,7 +22,6 @@ return [
     "add_new_product" => "Add New Product",
     "product" => "Product",
     "category" => "Category",
-    "name_ct" => "You have not entered a category name",
     "go_back" => "Go Back",
     "edit_product" => "Edit Product",
     "edit_category" => "Edit Category",
@@ -67,4 +66,5 @@ return [
     "register" => "Register",
     "forgot_password" => "Forgot Password",
     "account" => "Account",
+    "support" => "Support",
 ];

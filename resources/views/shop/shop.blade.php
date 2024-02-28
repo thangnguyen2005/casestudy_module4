@@ -4,24 +4,23 @@
     <div class="container-fluid pt-5">
         <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span
                 class="bg-secondary pr-3">Categories</span></h2>
-                <div class="row px-xl-5 pb-3">
+        <div class="row px-xl-5 pb-3">
             <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
-                <a class="text-decoration-none" href="">
+                <a class="text-decoration-none" href="{{ route('shop.asus') }}">
                     <div class="cat-item d-flex align-items-center mb-4">
                         <div class="overflow-hidden" style="width:45%; height: 100px;">
                             <img class="img-fluid"
                                 src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAP8AAADFCAMAAACsN9QzAAAAeFBMVEX///8AAADq6ura2trv7+/8/PycnJz4+PhYWFimpqbPz8+QkJB2dnYRERHd3d3n5+cJCQm3t7e+vr6Hh4eAgIAkJCTV1dVJSUnMzMyVlZUtLS3ExMQfHx9ubm5PT08yMjJmZmYZGRlBQUE5OTlnZ2ejo6MiIiJzc3P+oxJqAAAEsklEQVR4nO3abXuqIBwGcCxJ7UHSzEzX09a27/8ND9RpQeL8U3Jde3H/3pyOOvRGQiAZAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA+MOisI3f9o366QXYz3DfH/1sIhQ86ihuUDwMLComa4Bn8dK28wFbaZ+55RTRff/nZUO6qgnlBsFOHSyKui4E47aSh3C0nXkqdzRvpItcsBk9f6L+OyeVK83l0WXQcJ5fb4gPmfXMMv+WeJFmfhszv/iixlf5eRDu4qMIl5Gf/NbWr/JPqBfpmD9ckOOr/FnBlmy6ZrPMS3x76w+CsiRfpGP+PT2+yr/NWFBsJixfDZ+dd7V+mf/gKX/uEF/lnyRskdYhSz595I+6+vdZx/aX828c84s3FrCmZofUR/5d15lPnvIXLvEv/f/qXMqHwLnw0f87NcZB8tO/Vrf8bLKO4/Vk+PCdfb8rl/xu1PiHMy5EZC33NZxN82Y6FhfpWErHqfw3vXx2wPLZJMvzpiqFsI7S+PhaujPhIfY9fiNrePlWH97j3WqmalikInzmW3a7/6f1m+1b6m3k+hqj7/9WW64jvtNhL+tjkuRlmVqro7Wtt/3HhSzwM2tK2UK6a5hbP/oh74neFS8uXzD7kK/enIvVNsmraTqyX7DD9/863FoeNse5LFR+bappmbbnedx3m+GsCrT7n1+yaPm7pyhf6tJnSdZU41uv5JD/s/sBsN7sd/Pi0vI8POtbFXDSTn2+btPyV52XqXtPIlVxDvmzhFTwaRJ57jaMgUjYyl92DYwfLFXLcRr/02b+wbLx2gkY9zf7fyot/5RRJ+krp/ufsDGx3MtSgR+yd1lrJ9rfthv5u8fGD7aO8/8ptQK8tQCz7w9+enUjPyevAJTaSkl/fs7EO7HgpwYjFMYtuE8sH/KzEW22stf+rj+/ktFqoPAUn+sPoY97KzPb/+XKq9U5/uhbsdGWNGj5GUuT7+Nm3S7K5GPYz4z+KgjG9+2t/Pf2F4myavJkW8y/97/14LT82qMtTGXB2WRWzC310XgIz7ixtDXT9rTvf6dIpNYlEuv433L/O8n6uC/Jbd2SEen3r9Z3OORXbcO2kmc91CW/mu/+HD18B8AfWr+R0yk/Y7alrNJ2oDaWojzU79X1TYnkhJvjj7nRXrX8We9svbQ+HNaWobv+tJn1lptWsdf8eus/RbwjP4V97XQTP6A+7S08rHkbv+rk5j7H/P4Nv+qX6sUfH3rrZ/OfyUcuT04FW3uTlxjT78fx5bP5Q3Kq2Gn5fzF4fCNhqy9+Mv+R0Sb1UuPUGQz+k4/QS9/8Xjt0cv7UO5K92jOX9f962PmfLMyo/fbi8nP588eK7RY55R+1M7yW38hn6Vufyp8xNUuh/Fx8Eswl/+CLgEbf/2FZX3si//v4fzlh3HfoTr3BQM5/jIZe/eAfevljyxHUNz5uFkd9gjbd/fJix7pQJ+TGqmu3urBd3osiob1ZJWyVG4rON7GsVMP/KUd9+PVFLvVCFaedgfn/BWTw8nsKdFzN/ps/mQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgPQPumU79FNZoQUAAAAASUVORK5CYII="
                                 alt="">
                         </div>
-                        <div class="flex-fill pl-3">
+                        <div class="">
                             <h6>Asus</h6>
-                            <small class="text-body">100 Products</small>
                         </div>
                     </div>
                 </a>
             </div>
             <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
-                <a class="text-decoration-none" href="">
+                <a class="text-decoration-none" href="{{ route('shop.apple') }}">
                     <div class="cat-item d-flex align-items-center mb-4">
                         <div class="overflow-hidden" style="width:35%; height: 100px;">
                             <img class="img-fluid"
@@ -30,13 +29,12 @@
                         </div>
                         <div class="flex-fill pl-3">
                             <h6>Apple</h6>
-                            <small class="text-body">100 Products</small>
                         </div>
                     </div>
                 </a>
             </div>
             <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
-                <a class="text-decoration-none" href="">
+                <a class="text-decoration-none" href="{{ route('shop.dell') }}">
                     <div class="cat-item d-flex align-items-center mb-4">
                         <div class="overflow-hidden" style="width:35%; height: 100px;">
                             <img class="img-fluid"
@@ -45,13 +43,12 @@
                         </div>
                         <div class="flex-fill pl-3">
                             <h6>Dell</h6>
-                            <small class="text-body">100 Products</small>
                         </div>
                     </div>
                 </a>
             </div>
             <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
-                <a class="text-decoration-none" href="">
+                <a class="text-decoration-none" href="{{ route('shop.acer') }}">
                     <div class="cat-item d-flex align-items-center mb-4">
                         <div class="overflow-hidden" style="width:50%; height: 100px;">
                             <img class="img-fluid"
@@ -60,7 +57,7 @@
                         </div>
                         <div class="flex-fill pl-3">
                             <h6>Acer</h6>
-                            <small class="text-body">100 Products</small>
+
                         </div>
                     </div>
                 </a>
@@ -72,9 +69,9 @@
     <!-- Products Start -->
     <div class="container-fluid pt-5 pb-3">
         <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3">Featured
-            Products</span></h2>
-            <div class="row px-xl-5" id="items_container">
-                @foreach ($products as $product)
+                Products</span></h2>
+        <div class="row px-xl-5" id="items_container">
+            @foreach ($products as $product)
                 <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
                     <div class="product-item bg-light mb-4">
                         <div class="product-img position-relative overflow-hidden">
@@ -90,33 +87,29 @@
                                         href="{{ route('add.to.cart', $product->id) }}"><i
                                             class="fa fa-shopping-cart"></i></a>
                                 @endif
-                                <a class="btn btn-outline-dark btn-square" href=""><i class="far fa-heart"></i></a>
-                                <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-sync-alt"></i></a>
+
                                 <a class="btn btn-outline-dark btn-square"
                                     href="{{ route('detail', ['id' => $product->id]) }}"><i class="fa fa-search"></i></a>
                             </div>
                         </div>
+                        <div id="login-alert" class="alert alert-danger" style="display: none;">
+                            Bạn cần đăng nhập để thêm sản phẩm vào giỏ hàng.
+                        </div>
                         <div class="text-center py-4">
-                            <a class="h6 text-decoration-none text-truncate" href="">
-                                Số lượng:
-                                @if ($product->quantity <= 0)
-                                    <del><span class="text-danger">{{ $product->quantity }}</span></del>
-                                @else
-                                    <span class="{{ $product->quantity <= 0 ? 'text-danger' : '' }}">{{ $product->quantity }}</span>
-                                @endif
-                            </a><br>
-                            <a class="h6 text-decoration-none text-truncate" href="">
-                                @if ($product->quantity <= 0)
-                                    <span class="text-danger"><del>Hết hàng</del></span>
-                                @else
-                                    <span class="text-success">Còn hàng</span>
-                                @endif
-                            </a><br>
-                            <a class="h6 text-decoration-none text-truncate" href="">{{ $product->name }}</a>
                             <div class="d-flex align-items-center justify-content-center mt-2">
-                                <h5>{{ number_format($product->price) }}</h5>
-                                <h6 class="text-muted ml-2"><del>{{ number_format($product->price) }}</del></h6>
+                                @if ($product->quantity > 0)
+                                    <a class="h6 text-decoration-none text-truncate text-success" href="">
+                                        Còn hàng
+                                    </a>
+                                @else
+                                    <a class="h6 text-decoration-none text-truncate text-danger" href="">
+                                        Hết hàng
+                                    </a>
+                                @endif
                             </div>
+                            <a class="h6 text-decoration-none text-truncate" href="">{{ $product->name }}</a>
+
+                            <h5>{{ number_format($product->price) }}</h5>
                         </div>
                     </div>
                 </div>
@@ -124,41 +117,43 @@
         </div>
         <div class="col-md-12">
             <div class="text-center">
-                <button id="load_more_button" data-page="{{ $products->currentPage() + 1 }}"
-                    class="btn btn-primary">Load More</button>
+                <button id="load_more_button" data-page="{{ $products->currentPage() + 1 }}" class="btn btn-primary">Load
+                    More</button>
             </div>
         </div>
     </div>
     <!-- Products End -->
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"
-    integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+        integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
 
 
     <script type="text/javascript">
-        $('#keywords').keyup(function(){
+        $('#keywords').keyup(function() {
             var query = $(this).val();
-              if(query != '')
-                {
-                 var _token = $('input[name="_token"]').val();
-                 $.ajax({
-                  url:"{{url('/autocomplete-ajax')}}",
-                  method:"POST",
-                  data:{query:query, _token:_token},
-                  success:function(data){
-                   $('#search_ajax').fadeIn();
-                    $('#search_ajax').html(data);
-                  }
-                 });
-                }else{
-                  $('#search_ajax').fadeOut();
-                }
-            });
-            $(document).on('click', '.li_search_ajax', function(){
-    var productName = $(this).text();
-    var productImage = $(this).find('img').attr('src');
-    $('#keywords').val(productName);
-    $('#search_ajax').fadeOut();
-    // Hiển thị hình ảnh sản phẩm (productImage) theo nhu cầu của bạn
-});
-        </script>
+            if (query != '') {
+                var _token = $('input[name="_token"]').val();
+                $.ajax({
+                    url: "{{ url('/autocomplete-ajax') }}",
+                    method: "POST",
+                    data: {
+                        query: query,
+                        _token: _token
+                    },
+                    success: function(data) {
+                        $('#search_ajax').fadeIn();
+                        $('#search_ajax').html(data);
+                    }
+                });
+            } else {
+                $('#search_ajax').fadeOut();
+            }
+        });
+        $(document).on('click', '.li_search_ajax', function() {
+            var productName = $(this).text();
+            var productImage = $(this).find('img').attr('src');
+            $('#keywords').val(productName);
+            $('#search_ajax').fadeOut();
+            // Hiển thị hình ảnh sản phẩm (productImage) theo nhu cầu của bạn
+        });
+    </script>
 @endsection

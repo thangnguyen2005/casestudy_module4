@@ -19,7 +19,7 @@ class UserSeeder extends Seeder
 
         $item = new User();
         $item->name = "Admin";
-        $item->email = "admin123@gmail.com";
+        $item->email = "admin1234@gmail.com";
         $item->password = Hash::make('123');
         $item->address = 'Quảng Trị';
         $item->phone  = "0702339203";
